@@ -1,5 +1,7 @@
 angular.module("boxify").controller("RegisterController",
   function($scope, $rootScope, $meteor, $state){
+    window.meteor = $meteor;
+    window.vm = this;
     var vm = this;
 
     vm.boxes = $meteor.collection(Boxes).subscribe('boxes');
@@ -7,7 +9,8 @@ angular.module("boxify").controller("RegisterController",
 
     vm.credentials = {
       email: '',
-      password: ''
+      password: '',
+      passwordConfirm: ''
     };
 
     vm.newBox = {
@@ -29,10 +32,29 @@ angular.module("boxify").controller("RegisterController",
     }
 
     function handleError(error){
-      vm.error = 'Registration error - ' + error;
+      vm.error = error.reason;
+    }
+
+    function validate(){
+      var fn = Array.prototype.shift.apply(arguments);
+      var args = arguments;
+      var result = fn.apply(this, args);
+      if (result && result.error) {
+        vm.error = result.reason;
+        return false;
+      } else {
+        return true;
+      }
     }
 
     vm.register = function (){
-      $meteor.createUser(vm.credentials).then(saveBox, handleError);
+      if(validate(isNotEmpty, vm.credentials.email),
+         validate(isNotEmpty, vm.credentials.password),
+         validate(isNotEmpty, vm.newBox.name),
+         validate(isEmail, vm.credentials.email),
+         validate(areValidPasswords, vm.credentials.password, vm.credentials.passwordConfirm)) {
+
+        $meteor.createUser(vm.credentials).then(saveBox, handleError);
+      }
     };
   });
