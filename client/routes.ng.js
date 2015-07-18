@@ -3,7 +3,7 @@ angular.module('boxify')
   $locationProvider.html5Mode(true);
 
   $stateProvider
-  .state('root',{
+  .state('root', {
     url: '',
     abstract: true
   })
@@ -80,7 +80,7 @@ angular.module('boxify')
     // We can catch the error thrown when the $requireUser promise is rejected
     // and redirect the user back to the main page
     if (error === "AUTH_REQUIRED") {
-      $state.go('/');
+      $state.go('root.home');
     }
   });
 });;

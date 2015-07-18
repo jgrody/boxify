@@ -1,28 +1,17 @@
 angular.module("boxify").controller("RegisterController",
-  function($scope, $rootScope, $meteor, $state){
+  function($scope, $rootScope, $meteor, $state, $stateParams){
     window.meteor = $meteor;
-    window.vm = this;
-    var vm = this;
+    var rc = this;
 
-    vm.boxes = $meteor.collection(Boxes).subscribe('boxes');
-    $scope.$meteorSubscribe('boxes');
+    rc.boxes = $meteor.collection(Boxes).subscribe('boxes');
 
-    vm.credentials = {
-      email: '',
-      password: '',
-      passwordConfirm: ''
-    };
-
-    vm.newBox = {
-      owner: {},
-      name: ''
-    }
-
-    vm.error = '';
+    rc.credentials = { email: '', password: '', passwordConfirm: '' };
+    rc.newBox = { ownerId: {}, name: '' }
+    rc.error = '';
 
     function saveBox(data){
-      vm.newBox.owner = $rootScope.currentUser._id;
-      var promise = vm.boxes.save(vm.newBox);
+      rc.newBox.ownerId = $rootScope.currentUser._id;
+      var promise = rc.boxes.save(rc.newBox);
 
       promise.then(function(){
         $state.go('root.dashboard');
@@ -32,7 +21,7 @@ angular.module("boxify").controller("RegisterController",
     }
 
     function handleError(error){
-      vm.error = error.reason;
+      rc.error = error.reason;
     }
 
     function validate(){
@@ -40,21 +29,21 @@ angular.module("boxify").controller("RegisterController",
       var args = arguments;
       var result = fn.apply(this, args);
       if (result && result.error) {
-        vm.error = result.reason;
+        rc.error = result.reason;
         return false;
       } else {
         return true;
       }
     }
 
-    vm.register = function (){
-      if(validate(isNotEmpty, vm.credentials.email),
-         validate(isNotEmpty, vm.credentials.password),
-         validate(isNotEmpty, vm.newBox.name),
-         validate(isEmail, vm.credentials.email),
-         validate(areValidPasswords, vm.credentials.password, vm.credentials.passwordConfirm)) {
+    rc.register = function (){
+      if(validate(isNotEmpty, rc.credentials.email),
+         validate(isNotEmpty, rc.credentials.password),
+         validate(isNotEmpty, rc.newBox.name),
+         validate(isEmail, rc.credentials.email),
+         validate(areValidPasswords, rc.credentials.password, rc.credentials.passwordConfirm)) {
 
-        $meteor.createUser(vm.credentials).then(saveBox, handleError);
+        $meteor.createUser(rc.credentials).then(saveBox, handleError);
       }
     };
   });

@@ -3,8 +3,11 @@ angular.module('boxify').controller('BoxesDashboardController',
     window.scope = $scope;
     window.meteor = $meteor;
 
-    $scope.box = $meteor.object(Boxes, {owner: currentUser._id})
+    $scope.box = $meteor.object(Boxes, {ownerId: currentUser._id})
+    $scope.members = $meteor.collection(Members, {boxId: $scope.box._id});
+
     $scope.$meteorSubscribe('boxes');
+    $scope.$meteorSubscribe('members');
 
     function getTemplate(page){
       return 'client/boxes/dashboard/' + page + '.ng.html';
@@ -13,25 +16,35 @@ angular.module('boxify').controller('BoxesDashboardController',
     $scope.links = [
       {
         title: 'Merchandise',
-        template: getTemplate('merchandise')
+        template: getTemplate('merchandise'),
+        active: false
       },
       {
         title: 'Apparel',
-        template: getTemplate('apparel')
+        template: getTemplate('apparel'),
+        active: false
       },
       {
         title: 'Members',
-        template: getTemplate('members')
+        template: getTemplate('members'),
+        active: true
       },
       {
         title: 'Settings',
-        template: getTemplate('settings')
+        template: getTemplate('settings'),
+        active: false
       }
     ]
 
-    $scope.activeTemplate = $scope.links[0].template;
+    $scope.activeTemplate = $scope.links.find({active: true}).template;
 
-    $scope.navigateTo = function(template){
-      $scope.activeTemplate = template;
+    function deactivate(link){
+      link.active = false;
+    }
+
+    $scope.navigateTo = function(link){
+      $scope.links.each(deactivate)
+      link.active = true;
+      $scope.activeTemplate = link.template;
     }
   });

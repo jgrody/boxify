@@ -8,7 +8,7 @@ angular.module('boxify').controller('BoxesNewController',
     $scope.newBox = {};
 
     $scope.save = function(){
-      $scope.newBox.owner = $rootScope.currentUser._id;
+      $scope.newBox.ownerId = $rootScope.currentUser._id;
       $scope.promise = $scope.boxes.save($scope.newBox);
       $scope.newBox = {};
     }
