@@ -1,0 +1,20 @@
+//==============================================================================
+// Display helpers
+//==============================================================================
+@mixin display-block { display: block !important; }
+.display-block { @include display-block; }
+
+@mixin display-inline { display: inline !important; }
+.display-inline { @include display-inline; }
+
+@mixin display-inline-block { display: inline-block !important; }
+.display-inline-block { @include display-inline-block; }
+
+@mixin display-table { display: table !important; }
+.display-table { @include display-table; }
+
+@mixin display-table-row { display: table-row !important; }
+.display-table-row { @include display-table-row; }
+
+@mixin display-table-cell { display: table-cell !important; }
+.display-table-cell { @include display-table-cell; }

@@ -1,0 +1,17 @@
+//==============================================================================
+// Alignment helpers
+//==============================================================================
+@mixin align-top {
+  vertical-align: top;
+}
+.align-top { @include align-top; }
+
+@mixin align-middle {
+  vertical-align: middle;
+}
+.align-middle { @include align-middle; }
+
+@mixin align-bottom {
+  vertical-align: bottom;
+}
+.align-bottom { @include align-bottom; }

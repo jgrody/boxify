@@ -10,3 +10,5 @@ angularui:angular-ui-router
 accounts-password
 accounts-ui
 angular:angular-material
+planettraining:material-design-icons
+fourseven:scss

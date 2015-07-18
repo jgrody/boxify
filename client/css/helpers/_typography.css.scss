@@ -1,0 +1,38 @@
+//==============================================================================
+// Typography helper classes
+//==============================================================================
+@mixin text-normal { font-weight: normal !important; }
+.text-normal { @include text-normal; }
+
+@mixin text-bold { font-weight: bold !important; }
+.text-bold { @include text-bold; }
+
+@mixin text-italic { font-style: italic !important; }
+.text-italic { @include text-italic; }
+
+@mixin text-lowercase { text-transform: lowercase !important; }
+.text-lowercase { @include text-lowercase; }
+
+@mixin text-uppercase { text-transform: uppercase !important; }
+.text-uppercase { @include text-uppercase; }
+
+@mixin text-capitalize { text-transform: capitalize !important; }
+.text-capitalize { @include text-capitalize; }
+
+@mixin text-titelize { text-transform: titelize !important; }
+.text-titelize { @include text-titelize; }
+
+@mixin text-transform-none { text-transform: none !important; }
+.text-transform-none { @include text-transform-none; }
+
+@mixin text-decoration-none { text-decoration: none !important; }
+.text-decoration-none { @include text-decoration-none; }
+
+@mixin text-left { text-align: left !important; }
+.text-left { @include text-left; }
+
+@mixin text-right { text-align: right !important; }
+.text-right { @include text-right; }
+
+@mixin text-center { text-align: center !important; }
+.text-center { @include text-center; }

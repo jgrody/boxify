@@ -11,7 +11,7 @@ angular.module("boxify").controller("ResetController",
     vm.register = function (){
       $meteor.forgotPassword(vm.credentials.email).then(
         function(){
-          $state.go('home');
+          $state.go('root.home');
         },
         function(err){
           vm.error = 'Error sending forgot password email - ' + err;

@@ -3,35 +3,69 @@ angular.module('boxify')
   $locationProvider.html5Mode(true);
 
   $stateProvider
-  .state('home', {
+  .state('root',{
+    url: '',
+    abstract: true
+  })
+  .state('root.home', {
     url: '/',
-    templateUrl: 'client/boxes/new/template.ng.html',
-    controller: 'BoxesNewController'
+    views: {
+      'container@': {
+        templateUrl: 'client/boxes/new/template.ng.html',
+        controller: 'BoxesNewController'
+      }
+    }
+  })
+  .state('root.dashboard', {
+    url: '/dashboard',
+    views: {
+      'container@': {
+        templateUrl: 'client/boxes/dashboard/template.ng.html',
+        controller: 'BoxesDashboardController'
+      }
+    },
+    resolve: {
+      currentUser: ["$meteor", function($meteor){
+        return $meteor.requireUser();
+      }]
+    }
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'client/users/login/template.ng.html',
-    controller: 'LoginController',
-    controllerAs: 'lc'
+    views: {
+      'container@': {
+        templateUrl: 'client/users/login/template.ng.html',
+        controller: 'LoginController',
+        controllerAs: 'lc'
+      }
+    }
   })
   .state('register',{
     url: '/register',
-    templateUrl: 'client/users/register/template.ng.html',
-    controller: 'RegisterController',
-    controllerAs: 'rc'
+    views: {
+      'container@': {
+        templateUrl: 'client/users/register/template.ng.html',
+        controller: 'RegisterController',
+        controllerAs: 'rc'
+      }
+    }
   })
   .state('resetpw', {
     url: '/resetpw',
-    templateUrl: 'client/users/reset/template.ng.html',
-    controller: 'ResetController',
-    controllerAs: 'rpc'
+    views: {
+      'container@': {
+        templateUrl: 'client/users/reset/template.ng.html',
+        controller: 'ResetController',
+        controllerAs: 'rpc'
+      }
+    }
   })
   .state('logout', {
     url: '/logout',
     resolve: {
       "logout": ['$meteor', '$state', function($meteor, $state) {
         return $meteor.logout().then(function(){
-          $state.go('home');
+          $state.go('root.home');
         }, function(err){
           console.log('logout error - ', err);
         });

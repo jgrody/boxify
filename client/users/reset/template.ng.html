@@ -9,10 +9,15 @@
         <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
         <input type="text"
                ng-model="rpc.credentials.email"
-               placeholder="email" aria-label="email" />
+               placeholder="email"
+               aria-label="email" />
       </md-input-container>
+
       <md-button class="md-raised md-primary"
-                 ng-click="rpc.reset()" aria-label="login">Reset password</md-button>
+                 ng-click="rpc.reset()"
+                 aria-label="login">
+        Reset password
+      </md-button>
     </form>
     <div layout="row" layout-align="end center">
       <a href="/login">Login</a>

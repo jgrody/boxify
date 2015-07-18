@@ -1,11 +1,47 @@
 <head>
   <base href="/">
+  <meta name="viewport" content="initial-scale=1" />
 </head>
-<body ng-app="boxify">
-  <md-button ng-href="/login" ng-hide="$root.currentUser">Login</md-button>
-  <md-button ng-href="/register" ng-hide="$root.currentUser">Sign up</md-button>
-  <div ng-show="$root.currentUser">{{ $root.currentUser }}</div>
-  <md-button ng-href="/logout" ng-show="$root.currentUser">Logout</md-button>
+<body layout="column" ng-app="boxify">
+  <md-toolbar layout="row" layout-align="end center">
+    <div class="md-toolbar-tools">
+      <div flex="70">
+        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+          <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+        </md-button>
 
-  <div ui-view></div>
+        <h1 id="site-title">Boxify</h1>
+      </div>
+
+      <div flex="30">
+        <md-button class="nav-link pull-right"
+                   ng-href="/login"
+                   ng-hide="$root.currentUser">
+          Login
+        </md-button>
+
+        <md-button class="nav-link pull-right"
+                   ng-href="/register"
+                   ng-hide="$root.currentUser">
+          Sign up
+        </md-button>
+
+        <div ng-show="$root.currentUser">
+          {{ $root.currentUser }}
+        </div>
+        <md-button class="nav-link pull-right"
+                   ng-href="/logout"
+                   ng-show="$root.currentUser">
+          Logout
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <div layout="row" flex>
+    <div layout="column" flex id="content">
+      <md-content layout="column" flex>
+        <div ui-view="container"></div>
+      </md-content>
+    </div>
+  </div>
 </body>

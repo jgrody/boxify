@@ -1,0 +1,5 @@
+@mixin cursor-pointer { cursor: pointer; }
+.cursor-pointer { @include cursor-pointer; }
+
+@mixin cursor-move { cursor: move; }
+.cursor-move { @include cursor-move; }

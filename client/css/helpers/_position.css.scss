@@ -1,0 +1,20 @@
+//==============================================================================
+// Position helper classes
+//==============================================================================
+@mixin position-absolute { position: absolute !important; }
+.position-absolute { @include position-absolute; }
+
+@mixin position-relative { position: relative !important; }
+.position-relative { @include position-relative; }
+
+@mixin top { top: 0 !important }
+.top { @include top; }
+
+@mixin right { right: 0 !important }
+.right { @include right; }
+
+@mixin bottom { bottom: 0 !important }
+.bottom { @include bottom; }
+
+@mixin left { left: 0 !important }
+.left { @include left; }
