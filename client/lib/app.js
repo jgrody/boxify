@@ -4,29 +4,24 @@ angular.module('boxify', [
   'ngMaterial'
 ]);
 
+function spritePath(svg) {
+  return [
+    "/packages/planettraining_material-design-icons/bower_components/",
+    "material-design-icons/sprites/svg-sprite/",
+    svg,
+    ".svg"
+  ].join("");
+}
+
 var themeIcons = function ($mdIconProvider) {
   $mdIconProvider
-    .iconSet("social",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-social.svg")
-
-    .iconSet("action",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-action.svg")
-
-    .iconSet("communication",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-communication.svg")
-
-    .iconSet("content",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-content.svg")
-
-    .iconSet("toggle",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg")
-
-    .iconSet("navigation",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg")
-
-    .iconSet("image",
-             "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-image.svg");
-
+    .iconSet("social", spritePath("svg-sprite-social"))
+    .iconSet("action", spritePath("svg-sprite-action"))
+    .iconSet("communication", spritePath("svg-sprite-communication"))
+    .iconSet("content", spritePath("svg-sprite-content"))
+    .iconSet("toggle", spritePath("svg-sprite-toggle"))
+    .iconSet("navigation", spritePath("svg-sprite-navigation"))
+    .iconSet("image", spritePath("svg-sprite-image"));
 };
 
 angular.module('boxify')

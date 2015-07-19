@@ -12,7 +12,7 @@ angular.module("boxify").controller("LoginController",
     vm.login = function (){
       $meteor.loginWithPassword(vm.credentials.email, vm.credentials.password).then(
         function(){
-          $state.go('root.dashboard');
+          $state.go('root.dashboard.members');
         },
         function(err){
           vm.error = 'Login error - ' + err;

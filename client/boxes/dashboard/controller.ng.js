@@ -1,13 +1,6 @@
 angular.module('boxify').controller('BoxesDashboardController',
-  function($scope, $meteor, currentUser){
-    window.scope = $scope;
-    window.meteor = $meteor;
-
-    $scope.box = $meteor.object(Boxes, {ownerId: currentUser._id})
-    $scope.members = $meteor.collection(Members, {boxId: $scope.box._id});
-
-    $scope.$meteorSubscribe('boxes');
-    $scope.$meteorSubscribe('members');
+  function($scope, $meteor, currentUser, box){
+    $scope.box = box;
 
     function getTemplate(page){
       return 'client/boxes/dashboard/' + page + '.ng.html';
