@@ -51,6 +51,20 @@ angular.module('boxify')
       }]
     }
   })
+  .state('root.dashboard.settings', {
+    url: '/settings',
+    views: {
+      'content': {
+        // controller: 'BoxesDashboardMembersController',
+        templateUrl: 'client/boxes/dashboard/settings/template.ng.html',
+      }
+    },
+    // resolve: {
+    //   subscribe: ["$meteor", function($meteor) {
+    //     return $meteor.subscribe('members');
+    //   }]
+    // }
+  })
   .state('login', {
     url: '/login',
     views: {

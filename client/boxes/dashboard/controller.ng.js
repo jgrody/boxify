@@ -8,24 +8,16 @@ angular.module('boxify').controller('BoxesDashboardController',
 
     $scope.links = [
       {
-        title: 'Merchandise',
-        template: getTemplate('merchandise'),
-        active: false
-      },
-      {
-        title: 'Apparel',
-        template: getTemplate('apparel'),
-        active: false
-      },
-      {
         title: 'Members',
         template: getTemplate('members'),
-        active: true
+        active: true,
+        sref: 'root.dashboard.members'
       },
       {
         title: 'Settings',
         template: getTemplate('settings'),
-        active: false
+        active: false,
+        sref: 'root.dashboard.settings'
       }
     ]
 
