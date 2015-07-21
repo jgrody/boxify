@@ -1,5 +1,6 @@
 angular.module("boxify").controller("ResetController",
 function($meteor, $state){
+  window.meteor = $meteor;
   var vm = this;
 
   vm.credentials = { email: '' };

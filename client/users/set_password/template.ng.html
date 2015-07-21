@@ -1,0 +1,22 @@
+<md-content layout="row">
+  <span flex></span>
+  <md-whiteframe layout="column" flex="50">
+    <div ng-show="spc.error" class="md-warn"><small>{{ spc.error }}</small></div>
+    <form layout="column">
+      <md-input-container>
+        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
+        <input type="password"
+               ng-model="spc.credentials.password"
+               placeholder="password"
+               aria-label="password" />
+      </md-input-container>
+
+      <md-button class="md-raised md-primary"
+                 ng-click="spc.set()"
+                 aria-label="login">
+       Set Password
+     </md-button>
+    </form>
+  </md-whiteframe>
+  <span flex></span>
+</md-content>

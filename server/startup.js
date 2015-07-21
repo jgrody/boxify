@@ -1,52 +1,40 @@
 Meteor.startup(function () {
   Meteor.users.remove({});
 
-  var userId, boxId;
+  var ownerId, boxId, memberId;
 
-  var users = [
-    {
-      email: 'jackgro@me.com',
-      password: 'kahuna',
-      // passwordConfirm: 'kahuna'
-    }
-  ]
+  var owner = {
+    email: 'jtg028@gmail.com',
+    password: 'kahuna',
+    passwordConfirm: 'kahuna'
+  }
 
   if (Meteor.users.find().count() === 0){
-    userId = Accounts.createUser(users[0]);
+    ownerId = Accounts.createUser(owner);
   }
 
   Boxes.remove({});
   if (Boxes.find().count() === 0) {
     boxId = Boxes.insert({
-      ownerId: userId,
+      ownerId: ownerId,
       name: 'The Hot Box',
-      ownerName: 'Jack Grossmann'
+      ownerName: 'Jack Grossmann',
+      members: []
     })
   }
 
-  Members.remove({});
-  var members = [
-    {
-      firstName: 'Joe',
-      lastName: 'Schmo',
-      email: 'joe@schmo.com'
-    },
-    {
-      firstName: 'Jane',
-      lastName: 'Doe',
-      email: 'jane@doe.com'
-    }
-  ];
+  var member = {
+    email: 'jack.grossmann@gmail.com',
+    password: 'kahuna'
+  };
 
-  if (Members.find().count() === 0) {
-    members.each(function(member){
-      Members.insert({
-        boxId: boxId,
-        firstName: member.firstName,
-        lastName: member.lastName,
-        email: member.email
-      })
-    })
+  var additionalProps = {
+    boxId: boxId,
+    acceptedInvite: false,
+    inviteToken: null,
+    invited: false,
   }
+  memberId = Accounts.createUser(member);
 
+  Meteor.users.update({_id: memberId}, {$set: additionalProps});
 });

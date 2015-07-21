@@ -41,15 +41,24 @@ Meteor.startup(function () {
       + url;
   };
 
-  Accounts.onCreateUser(function(options, user) {
-    user.profile = {};
+  Accounts.emailTemplates.resetPassword.text = function(user, url){
+     url = url.replace('#/', '')
+     return [
+       "Hi\n\n",
+       "Click this link to reset your password: \n\n",
+        url
+     ].join("");
+  }
 
-    // we wait for Meteor to create the user before sending an email
-    Meteor.setTimeout(function() {
-      Accounts.sendVerificationEmail(user._id);
-    }, 2 * 1000);
-
-    return user;
-  });
+  // Accounts.onCreateUser(function(options, user) {
+  //   user.profile = {};
+  //
+  //   // we wait for Meteor to create the user before sending an email
+  //   Meteor.setTimeout(function() {
+  //     Accounts.sendVerificationEmail(user._id);
+  //   }, 2 * 1000);
+  //
+  //   return user;
+  // });
 });
 

@@ -26,15 +26,12 @@ angular.module('boxify')
       }
     },
     resolve: {
+      box: ["$meteor", function($meteor){
+        return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
+      }],
       currentUser: ["$meteor", function($meteor){
         return $meteor.requireUser();
       }],
-      box: ["$meteor", function($meteor){
-        return $meteor.object(Boxes, {ownerId: Meteor.user()._id})
-      }],
-      subscribe: ["$meteor", function($meteor) {
-        return $meteor.subscribe('boxes');
-      }]
     }
   })
   .state('root.dashboard.members', {
@@ -58,12 +55,26 @@ angular.module('boxify')
         // controller: 'BoxesDashboardMembersController',
         templateUrl: 'client/boxes/dashboard/settings/template.ng.html',
       }
-    },
-    // resolve: {
-    //   subscribe: ["$meteor", function($meteor) {
-    //     return $meteor.subscribe('members');
-    //   }]
-    // }
+    }
+  })
+  .state('root.members', {
+    url: '/members',
+    abstract: true,
+    views: {
+      'master@': {
+        controller: 'BoxesMembersController',
+        templateUrl: 'client/layouts/members.ng.html'
+      }
+    }
+  })
+  .state('root.members.profile', {
+    url: '/:userId',
+    views: {
+      'content': {
+        controller: 'BoxesMembersProfileController',
+        templateUrl: 'client/boxes/members/profile/template.ng.html',
+      }
+    }
   })
   .state('login', {
     url: '/login',
@@ -92,6 +103,16 @@ angular.module('boxify')
         templateUrl: 'client/users/reset/template.ng.html',
         controller: 'ResetController',
         controllerAs: 'rpc'
+      }
+    }
+  })
+  .state('setPassword', {
+    url: '/reset-password/:token?:memberId',
+    views: {
+      'master@': {
+        templateUrl: 'client/users/set_password/template.ng.html',
+        controller: 'SetPasswordController',
+        controllerAs: 'spc'
       }
     }
   })

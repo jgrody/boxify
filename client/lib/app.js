@@ -4,15 +4,6 @@ angular.module('boxify', [
   'ngMaterial'
 ]);
 
-function spritePath(svg) {
-  return [
-    "/packages/planettraining_material-design-icons/bower_components/",
-    "material-design-icons/sprites/svg-sprite/",
-    svg,
-    ".svg"
-  ].join("");
-}
-
 var themeIcons = function ($mdIconProvider) {
   $mdIconProvider
     .iconSet("social", spritePath("svg-sprite-social"))
@@ -26,3 +17,12 @@ var themeIcons = function ($mdIconProvider) {
 
 angular.module('boxify')
   .config(themeIcons);
+
+function spritePath(svg) {
+  return [
+    "/packages/planettraining_material-design-icons/bower_components/",
+    "material-design-icons/sprites/svg-sprite/",
+    svg,
+    ".svg"
+  ].join("");
+}

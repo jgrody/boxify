@@ -4,7 +4,6 @@
     <md-list>
       <md-list-item
           class="sidenav-list-item"
-          ng-click="navigateTo(link, $event)"
           ui-sref-active="active"
           ng-repeat="link in links">
         <a ui-sref="{{link.sref}}" class="md-subhead sidenav-list-item-link">
@@ -15,7 +14,7 @@
   </md-sidenav>
   <div layout="column" flex id="content">
     <md-content layout="column" flex class="md-padding">
-      <div ui-view="content"></div>
+      <div id="content" ui-view="content"></div>
     </md-content>
   </div>
 </div>

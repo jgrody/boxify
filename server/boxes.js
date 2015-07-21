@@ -4,6 +4,10 @@ Meteor.publish("boxes", function () {
       {$and:[
         {ownerId: this.userId},
         {ownerId: {$exists: true}}
+      ]},
+      {$and:[
+        {members: this.userId},
+        {members: {$exists: true}}
       ]}
     ]});
 });

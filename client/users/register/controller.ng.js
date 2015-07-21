@@ -1,6 +1,7 @@
 angular.module("boxify").controller("RegisterController",
-  function($scope, $rootScope, $meteor, $state, $stateParams){
+  function($scope, $rootScope, $meteor, $state, $stateParams, $timeout){
     window.meteor = $meteor;
+    window.rs = $rootScope;
     var rc = this;
 
     rc.boxes = $meteor.collection(Boxes).subscribe('boxes');
@@ -10,14 +11,16 @@ angular.module("boxify").controller("RegisterController",
     rc.error = '';
 
     function saveBox(data){
-      rc.newBox.ownerId = $rootScope.currentUser._id;
-      var promise = rc.boxes.save(rc.newBox);
+      return $timeout(function(){
+        rc.newBox.ownerId = $rootScope.currentUser._id;
+        var promise = rc.boxes.save(rc.newBox);
 
-      promise.then(function(){
-        $state.go('root.dashboard');
-      }, handleError);
+        promise.then(function(){
+          $state.go('root.dashboard.members');
+        }, handleError);
 
-      return promise;
+        return promise;
+      })
     }
 
     function handleError(error){
@@ -43,7 +46,7 @@ angular.module("boxify").controller("RegisterController",
          validate(isEmail, rc.credentials.email),
          validate(areValidPasswords, rc.credentials.password, rc.credentials.passwordConfirm)) {
 
-        $meteor.createUser(rc.credentials).then(saveBox, handleError);
+        return $meteor.createUser(rc.credentials).then(saveBox, handleError);
       }
     };
   });

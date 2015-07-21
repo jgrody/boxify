@@ -1,8 +1,21 @@
-<md-list>
-  <md-list-item class="md-2-line" ng-repeat="member in members">
-    <div class="md-list-item-text">
-      <h3>{{member.firstName}} {{member.lastName}}</h3>
-      <p> {{ member.email }} </p>
-    </div>
-  </md-list-item>
-</md-list>
+<section id="members">
+  <md-list>
+    <md-list-item class="md-3-line position-relative" ng-repeat="member in members">
+      <div class="md-list-item-text">
+        <p ng-repeat="email in member.emails">
+          {{email.address}}
+          <md-button
+              ng-if="!member.invited"
+              class="md-secondary md-primary position-absolute member-invite"
+              ng-click="invite(member)">
+            Invite
+          </md-button>
+          <span class="md-secondary"
+                ng-if="member.invited">
+            Invited
+          </span>
+        </p>
+      </div>
+    </md-list-item>
+  </md-list>
+</section>
