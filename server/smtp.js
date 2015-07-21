@@ -8,7 +8,7 @@ Meteor.startup(function () {
   // }
 
   // process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
-  process.env.MAIL_URL = 'smtp://jack.grossmann:Kahuna!8@smtp.gmail.com:465/';
+  process.env.MAIL_URL = 'smtp://jtg028:Kahuna18@smtp.gmail.com:465/';
 
   // By default, the email is sent from no-reply@meteor.com. If you wish to receive email from users asking for help with their account, be sure to set this to an email address that you can receive email at.
   Accounts.emailTemplates.from = 'Boxify <no-reply@boxify.com>';

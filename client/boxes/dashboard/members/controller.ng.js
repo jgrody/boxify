@@ -1,5 +1,5 @@
 angular.module('boxify').controller('BoxesDashboardMembersController',
-  function($scope, $meteor, $timeout, box){
+  function($scope, $meteor, $timeout, box, membersRepository){
     window.scope = $scope;
     window.meteor = $meteor;
 
@@ -13,7 +13,7 @@ angular.module('boxify').controller('BoxesDashboardMembersController',
     })
 
     $scope.invite = function(member){
-      $meteor.call('invite', box._id, member, createToken())
+      return membersRepository.invite(box._id, member, createToken())
         .then(setInvited(member))
         .catch(function(err){
           console.log('err: ', err);
@@ -21,7 +21,7 @@ angular.module('boxify').controller('BoxesDashboardMembersController',
     }
 
     function setInvited(member){
-      return $meteor.call('setInvited', box._id, member);
+      return membersRepository.setInvited(box._id, member)
     }
 
     function createToken(){

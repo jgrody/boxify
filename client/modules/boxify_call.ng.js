@@ -1,11 +1,8 @@
-angular.module('boxify').factory('boxifyCall', [
-  '$q',
-  '$meteor',
-  'flashErrors',
-function($q, $meteor, flashErrors){
+angular.module('boxify').factory('boxifyCall',
+function($meteor, flashErrors){
   function handleErrors(error){
     flashErrors(error);
-    return $q.reject(error);
+    return error;
   }
 
   function handleSuccess(response){
@@ -13,10 +10,8 @@ function($q, $meteor, flashErrors){
   }
 
   return function(method, args) {
-    var opts = Object.merge({flash: true}, {});
-
     return $meteor.call(method, args)
       .catch(handleErrors)
       .then(handleSuccess);
   };
-}])
+});
