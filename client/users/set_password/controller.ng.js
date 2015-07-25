@@ -11,7 +11,7 @@ function($meteor, $state, $stateParams){
   vm.set = function (){
     $meteor.resetPassword(token, vm.credentials.password)
       .then(function(data){
-        console.log("data:", data);
+        $state.go('root.members.profile')
       }, function(err){
         vm.error = 'Reset error - ' + err;
       });

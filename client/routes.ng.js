@@ -116,6 +116,16 @@ angular.module('boxify')
       }
     }
   })
+  .state('enrollAccount', {
+    url: '/enroll-account/:token',
+    views: {
+      'master@': {
+        templateUrl: 'client/users/set_password/template.ng.html',
+        controller: 'SetPasswordController',
+        controllerAs: 'spc'
+      }
+    }
+  })
   .state('logout', {
     url: '/logout',
     resolve: {

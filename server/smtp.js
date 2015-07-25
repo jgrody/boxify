@@ -32,12 +32,13 @@ Meteor.startup(function () {
   };
 
   Accounts.emailTemplates.enrollAccount.subject = function (user) {
-    return "Welcome to Boxify, " + user.profile.name;
+    return "Welcome to Boxify!"
   };
 
   Accounts.emailTemplates.enrollAccount.text = function (user, url) {
-    return "You've been added to Boxify!"
-      + " To activate your account, simply click the link below:\n\n"
+    url = url.replace('#/', '')
+    return "You've been added to Boxify!\n\n"
+      + "Click the link below to activate your account:\n"
       + url;
   };
 
@@ -50,15 +51,16 @@ Meteor.startup(function () {
      ].join("");
   }
 
-  // Accounts.onCreateUser(function(options, user) {
-  //   user.profile = {};
-  //
-  //   // we wait for Meteor to create the user before sending an email
-  //   Meteor.setTimeout(function() {
-  //     Accounts.sendVerificationEmail(user._id);
-  //   }, 2 * 1000);
-  //
-  //   return user;
-  // });
+  Accounts.onCreateUser(function(options, user) {
+    user.profile = {};
+  
+    // we wait for Meteor to create the user before sending an email
+    Meteor.setTimeout(function() {
+      // Accounts.sendVerificationEmail(user._id);
+      // Accounts.sendEnrollmentEmail(user._id);
+    }, 2 * 1000);
+  
+    return user;
+  });
 });
 

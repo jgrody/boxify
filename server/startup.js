@@ -25,14 +25,17 @@ Meteor.startup(function () {
 
   var member = {
     email: 'jack.grossmann@gmail.com',
-    password: 'kahuna'
+    password: 'kahuna',
+    profile: {
+      name: 'Jack Grossmann'
+    }
   };
 
   var additionalProps = {
     boxId: boxId,
     acceptedInvite: false,
     inviteToken: null,
-    invited: false,
+    invited: false
   }
   memberId = Accounts.createUser(member);
 
