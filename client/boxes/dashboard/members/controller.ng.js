@@ -2,25 +2,56 @@ angular.module('boxify').controller('BoxesDashboardMembersController',
   function($scope, $meteor, $timeout, box, boxifyCall){
     window.scope = $scope;
     window.meteor = $meteor;
+    console.log("box: ", box);
+    console.log("box._id: ", box._id);
+
+    $scope.newMember = {};
 
     $timeout(function(){
-      $scope.members = $meteor
-        .collection(Meteor.users, false)
-        .subscribe('members')
-        .filter(function(member){
-          return member.boxId == box._id;
-        })
-    })
+      $scope.members = $meteor.collection(function(){
+        return Meteor.users.find({boxId: box._id});
+      })
+
+      $scope.$meteorSubscribe('members', box._id);
+    });
+
+
 
     $scope.invite = function(member){
       return boxifyCall('inviteByOwner', {
         boxId: box._id,
         member: member
+      }).then(function(){
+        return setInvited(member);
       })
-      .then(setInvited(member))
-      .catch(function(err){
-        console.log('err: ', err);
-      })
+    }
+
+    $scope.addMember = function(newMember){
+      if (newMember.email && isEmail(newMember.email)) {
+        return boxifyCall('createMember', {
+          boxId: box._id,
+          email: newMember.email,
+          password: createToken()
+        }).then(function(userId){
+          console.log("controller userId: ", userId);
+          $scope.invite({_id: userId});
+        }).catch(function(err){
+          console.log("err: ", err);
+        })
+      }
+    }
+
+
+    function createToken(){
+      var rand = function() {
+        return Math.random().toString(36).substr(2);
+      };
+
+      var token = function() {
+        return rand() + rand();
+      };
+
+      return token();
     }
 
     function setInvited(member){

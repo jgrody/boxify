@@ -20,8 +20,6 @@ Meteor.methods({
     var boxId = opts.boxId;
     var member = opts.member;
 
-    check(boxId, String);
-    check(member._id, String);
     var box = Boxes.findOne(boxId);
 
     if (!box) { throw new Meteor.Error(404, "No such box"); }
@@ -45,6 +43,25 @@ Meteor.methods({
         Accounts.sendEnrollmentEmail(member._id);
       }
     }
+  },
+
+  createMember: function(opts){
+    opts = opts || null;
+    if (!opts) return;
+
+    var boxId = opts.boxId;
+    var email = opts.email;
+    var password = opts.password;
+
+    var userId = Accounts.createUser({
+      email: email,
+      password: password
+    })
+
+    Meteor.users.update({_id: userId}, {$set: {boxId: boxId}});
+    console.log("userId: ", userId);
+
+    return userId;
   }
 });
 

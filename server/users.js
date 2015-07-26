@@ -2,23 +2,20 @@ Meteor.publish("users", function () {
   return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
 });
 
-Meteor.publish("members", function () {
-  if (this.userId) {
+Meteor.publish("members", function (boxId) {
+  console.log("subscribe boxId: ", boxId);
+  if (this.userId && boxId) {
     return Meteor.users.find({
       $or:[
         {$and:[
-          {ownerId: {$exists: false}}
-        ]},
-        {$and:[
-          {boxId: {$exists: true}}
+          {boxId: {$exists: true}},
+          {boxId: boxId},
         ]}
       ]}, {
       fields: {
         emails: 1,
         boxId: 1,
-        acceptedInvite: 1,
         invited: 1,
-        inviteToken: 1,
         profile: 1
       }
     });

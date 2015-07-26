@@ -6,7 +6,6 @@ Meteor.publish("boxes", function () {
         {ownerId: {$exists: true}}
       ]},
       {$and:[
-        {members: this.userId},
         {members: {$exists: true}}
       ]}
     ]});

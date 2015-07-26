@@ -33,8 +33,6 @@ Meteor.startup(function () {
 
   var additionalProps = {
     boxId: boxId,
-    acceptedInvite: false,
-    inviteToken: null,
     invited: false
   }
   memberId = Accounts.createUser(member);

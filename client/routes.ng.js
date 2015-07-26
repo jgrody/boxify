@@ -43,9 +43,9 @@ angular.module('boxify')
       }
     },
     resolve: {
-      // subscribe: ["$meteor", function($meteor) {
-      //   return $meteor.subscribe('members');
-      // }]
+      subscribe: ["$meteor", function($meteor) {
+        return $meteor.subscribe('members');
+      }]
     }
   })
   .state('root.dashboard.settings', {
