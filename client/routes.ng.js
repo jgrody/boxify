@@ -45,7 +45,10 @@ angular.module('boxify')
     resolve: {
       subscribe: ["$meteor", function($meteor) {
         return $meteor.subscribe('members');
-      }]
+      }],
+      box: ["$meteor", function($meteor){
+        return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
+      }],
     }
   })
   .state('root.dashboard.settings', {

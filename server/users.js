@@ -3,13 +3,12 @@ Meteor.publish("users", function () {
 });
 
 Meteor.publish("members", function (boxId) {
-  console.log("subscribe boxId: ", boxId);
   if (this.userId && boxId) {
     return Meteor.users.find({
       $or:[
         {$and:[
           {boxId: {$exists: true}},
-          {boxId: boxId},
+          {boxId: boxId}
         ]}
       ]}, {
       fields: {
