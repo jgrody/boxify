@@ -27,11 +27,17 @@ angular.module('boxify').controller('BoxesDashboardMembersController',
         return boxifyCall('createMember', {
           boxId: box._id,
           email: newMember.email,
-          password: createToken()
+          password: createToken(),
+          profile: {
+            firstName: newMember.firstName,
+            lastName: newMember.lastName
+          }
         }).then(function(userId){
           if (!userId.error){
             $scope.invite({_id: userId});
           }
+        }).then(function(){
+          $scope.newMember = {};
         })
       }
     }

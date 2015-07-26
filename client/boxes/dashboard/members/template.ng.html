@@ -1,5 +1,17 @@
 <section id="members">
-  <form layout="row">
+  <form layout="row" name="newMemberForm">
+    <md-input-container>
+      <input type="text"
+             ng-model="newMember.firstName"
+             placeholder="first name"
+             aria-label="first name" />
+    </md-input-container>
+    <md-input-container>
+      <input type="text"
+             ng-model="newMember.lastName"
+             placeholder="last name"
+             aria-label="last name" />
+    </md-input-container>
     <md-input-container>
       <input type="text"
              ng-model="newMember.email"
@@ -16,20 +28,14 @@
   <md-list>
     <md-list-item class="md-3-line position-relative" ng-repeat="member in members">
       <div class="md-list-item-text">
+        {{member.profile.firstName}} {{member.profile.lastName}}
         <p ng-repeat="email in member.emails">
           {{email.address}}
 
           <span class="md-2-line">
-            
             <span class="md-secondary"
                   ng-show="!member.invited && !member.emails[0].verified">
               Unverified
-<!--               <md-button
-                  class="pad-none push-none md-primary"
-                  ng-click="invite(member)">
-                Invite
-              </md-button>
- -->
             </span>
             <span class="md-secondary"
                   ng-show="member.emails[0].verified">

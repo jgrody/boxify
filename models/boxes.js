@@ -58,8 +58,12 @@ Meteor.methods({
       password: password
     })
 
-    Meteor.users.update({_id: userId}, {$set: {boxId: boxId}});
-    console.log("userId: ", userId);
+    Meteor.users.update({_id: userId}, {
+      $set: {
+        boxId: boxId,
+        profile: opts.profile
+      }
+    });
 
     return userId;
   }
