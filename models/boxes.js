@@ -40,7 +40,7 @@ Meteor.methods({
           ].join("");
         };
 
-        Accounts.sendEnrollmentEmail(member._id);
+        // Accounts.sendEnrollmentEmail(member._id);
       }
     }
   },

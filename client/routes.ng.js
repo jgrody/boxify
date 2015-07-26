@@ -6,6 +6,11 @@ angular.module('boxify')
   .state('root', {
     url: '',
     abstract: true,
+    resolve: {
+      currentUser: ["$meteor", function($meteor){
+        return $meteor.waitForUser();
+      }],
+    }
   })
   .state('root.home', {
     url: '',
@@ -27,10 +32,10 @@ angular.module('boxify')
     },
     resolve: {
       box: ["$meteor", function($meteor){
-        return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
-      }],
-      currentUser: ["$meteor", function($meteor){
-        return $meteor.requireUser();
+        var user = Meteor.user();
+        if (user && user._id) {
+          return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
+        }
       }],
     }
   })
@@ -47,7 +52,10 @@ angular.module('boxify')
         return $meteor.subscribe('members');
       }],
       box: ["$meteor", function($meteor){
-        return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
+        var user = Meteor.user();
+        if (user) {
+          return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
+        }
       }],
     }
   })
@@ -148,8 +156,9 @@ angular.module('boxify')
     function(event, toState, toParams, fromState, fromParams, error) {
     // We can catch the error thrown when the $requireUser promise is rejected
     // and redirect the user back to the main page
+    console.log("error: ", error);
     if (error === "AUTH_REQUIRED") {
-      $state.go('root.home');
+      $state.go('login');
     }
   });
 });;
