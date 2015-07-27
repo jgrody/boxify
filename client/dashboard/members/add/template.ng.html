@@ -47,6 +47,7 @@
         <input type="email"
                required
                name="email"
+               ng-model-options="{ debounce: { 'default': 300, 'blur': 0 } }"
                ng-model="newMember.email"
                aria-label="email" />
 
