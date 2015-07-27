@@ -1,6 +1,8 @@
 angular.module('boxify')
 .config(function($urlRouterProvider, $stateProvider, $locationProvider){
-  $locationProvider.html5Mode(true);
+  if (!window.location.port.match(/9876/)) {
+    $locationProvider.html5Mode(true);
+  }
 
   $stateProvider
   .state('root', {
