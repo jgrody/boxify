@@ -34,9 +34,7 @@ function($scope, box, boxifyCall, $mdDialog){
   }
 
   $scope.submitDisabled = function(){
-    return !$scope.newMember.firstName ||
-      !$scope.newMember.lastName ||
-      !$scope.newMember.email
+    return !$scope.newMember.email;
   }
   
   function createToken(){

@@ -16,32 +16,33 @@
   <md-dialog-content>
     <form name="memberForm">
       <div layout layout-sm="column">
+        <md-icon
+            md-svg-icon="social:ic_person_outline_24px"
+            class="push-right-xs">
+        </md-icon>
         <md-input-container flex>
           <label>First name</label>
           <input type="text"
-                 required
                  name="firstName"
                  ng-model="newMember.firstName"
                  aria-label="first name" />
 
-          <div ng-messages="memberForm.firstName.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
         </md-input-container>
         <md-input-container flex>
           <label>Last Name</label>
           <input type="text"
-                 required
                  name="lastName"
                  ng-model="newMember.lastName"
                  aria-label="last name" />
-
-          <div ng-messages="memberForm.lastName.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
         </md-input-container>
       </div>
-      <md-input-container flex>
+
+      <div layout layout-sm="column">
+        <md-icon
+            md-svg-icon="content:ic_mail_24px"
+            class="push-right-xs">
+        </md-icon>
+        <md-input-container flex>
         <label>Email</label>
         <input type="email"
                required
@@ -55,7 +56,9 @@
           <div ng-messages="memberForm.email.$error">
             <div ng-message="email">The address you entered is not valid.</div>
           </div>
-      </md-input-container>
+        </md-input-container>
+      </div>
+      
     </form>
   </md-dialog-content>
 
