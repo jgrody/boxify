@@ -1,5 +1,5 @@
 angular.module('boxify').controller('BoxesDashboardMembersController',
-function($scope, $meteor, box, boxifyCall, boxifyDialog){
+function($scope, $meteor, box, boxifyCall, boxifyDialog, toast){
 
   $scope.members = $meteor.collection(function(){
     return Meteor.users.find({boxId: box._id});
@@ -28,6 +28,13 @@ function($scope, $meteor, box, boxifyCall, boxifyDialog){
 
     boxifyDialog.show(confirm).then(function(){
       return boxifyCall('deleteMember', { member: member })
+      .then(function(){
+        toast({
+          type: "success",
+          title: "Success",
+          message: "The user has been deleted."
+        })
+      })
     })
   }
 });

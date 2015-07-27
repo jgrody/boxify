@@ -86,5 +86,17 @@ describe('DashboardMembersAddController', function() {
 
       expect($scope.invite).toHaveBeenCalledWith({_id: 'ABC123'});
     });
+
+    it('closes the add modal afterwards', function() {
+      spyOn($scope, 'close');
+
+      var member = { email: "valid@email.com" };
+      $scope.add(member);
+
+      deferred.resolve('ABC123');
+      $scope.$apply();
+
+      expect($scope.close).toHaveBeenCalled()
+    });
   });
 });

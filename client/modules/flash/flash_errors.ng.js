@@ -1,20 +1,18 @@
 angular.module('boxify').factory('flashErrors',
- function($mdToast){
+ function(toast){
   return function(error) {
     if (error.reason) {
-      $mdToast.show(
-        $mdToast.simple()
-          .content(error.reason)
-          .position('top right')
-          .hideDelay(3000)
-        );
+      toast({
+        type: "error",
+        title: "Something went wrong",
+        message: error.reason
+      })
     } else {
-      $mdToast.show(
-        $mdToast.simple()
-          .content("Oops! A server error has occurred. Sorry.")
-          .position('top right')
-          .hideDelay(3000)
-        );
+      toast({
+        type: "error",
+        title: "Oops! A server error has occurred. Sorry.",
+        message: error.reason
+      })
     }
   };
 })

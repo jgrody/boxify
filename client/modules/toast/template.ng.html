@@ -1,0 +1,28 @@
+<md-toast>
+  <div class="toast" ng-class="toastClass">
+    <div class="toast-title" ng-if="title" >
+      <div class="toast-title-text">{{title}}</div>
+
+      <a class="btn btn-link toast-title-close" ng-click="dismiss()">
+        <i class="fa fa-close"></i>
+      </a>
+    </div>
+
+    <div class="toast-message" ng-if="message">
+      <div class="toast-message-with-action-wrap" ng-if="hasAction()">
+        <div class="toast-message-with-action-text" sanitized="message"></div>
+
+        <div class="toast-message-action">
+          <button class="btn btn-link pull-right" ng-click="action()">
+            {{actionLabel}}
+          </button>
+        </div>
+      </div>
+
+      <div class="toast-message-text"
+        ng-if="!hasAction()"
+        sanitized="message">
+      </div>
+    </div>
+  </div>
+</md-toast>

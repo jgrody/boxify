@@ -1,5 +1,5 @@
 angular.module('boxify').controller('DashboardMembersAddController',
-function($scope, box, boxifyCall, $mdDialog){
+function($scope, box, boxifyCall, $mdDialog, toast){
   $scope.newMember = {};
   $scope.close = $mdDialog.hide;
 
@@ -26,7 +26,15 @@ function($scope, box, boxifyCall, $mdDialog){
         if (!userId.error){
           $scope.invite({_id: userId});
         }
-      }).then($scope.close)
+      })
+      .then($scope.close)
+      .then(function(){
+        toast({
+          type: "success",
+          title: "Success",
+          message: "The user has been added and will get an email with further instructions to verify their account."
+        })
+      })
     }
   }
 
