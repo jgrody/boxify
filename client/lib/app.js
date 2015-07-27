@@ -6,6 +6,7 @@ angular.module('boxify', [
 
 var themeIcons = function ($mdIconProvider) {
   $mdIconProvider
+    .defaultFontSet('fontawesome')
     .iconSet("social", spritePath("svg-sprite-social"))
     .iconSet("action", spritePath("svg-sprite-action"))
     .iconSet("communication", spritePath("svg-sprite-communication"))

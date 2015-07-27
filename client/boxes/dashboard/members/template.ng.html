@@ -1,49 +1,66 @@
 <section id="members">
-  <form layout="row" name="newMemberForm">
-    <md-input-container>
-      <input type="text"
-             ng-model="newMember.firstName"
-             placeholder="first name"
-             aria-label="first name" />
-    </md-input-container>
-    <md-input-container>
-      <input type="text"
-             ng-model="newMember.lastName"
-             placeholder="last name"
-             aria-label="last name" />
-    </md-input-container>
-    <md-input-container>
-      <input type="text"
-             ng-model="newMember.email"
-             placeholder="email"
-             aria-label="email" />
-    </md-input-container>
+  <div layout="row">
+    <form layout="row" name="newMemberForm" flex="80">
+      <md-input-container>
+        <input type="text"
+               ng-model="newMember.firstName"
+               placeholder="first name"
+               aria-label="first name" />
+      </md-input-container>
+      <md-input-container>
+        <input type="text"
+               ng-model="newMember.lastName"
+               placeholder="last name"
+               aria-label="last name" />
+      </md-input-container>
+      <md-input-container>
+        <input type="text"
+               ng-model="newMember.email"
+               placeholder="email"
+               aria-label="email" />
+      </md-input-container>
 
-    <md-button class="md-secondary md-primary"
+    </form>
+
+    <md-button class="md-fab md-secondary"
                ng-click="addMember(newMember)"
+               aria-label="Add member">
+      <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
+    </md-button>
+
+
+<!--     <md-button class="md-secondary md-primary pad-none push-none"
+               ng-click="addMember(newMember)"
+               flex="20"
                aria-label="add">
       Add member
     </md-button>
-  </form>
+ -->    
+  </div>
+    
   <md-list>
-    <md-list-item class="md-3-line position-relative" ng-repeat="member in members">
+    <md-list-item
+        class="md-3-line position-relative"
+        ng-repeat="member in members"
+        layout="row">
+
       <div class="md-list-item-text">
-        {{member.profile.firstName}} {{member.profile.lastName}}
-        <p ng-repeat="email in member.emails">
-          {{email.address}}
+        <div class="md-2-line" flex="70">
+          {{member.profile.firstName}} {{member.profile.lastName}}
+          <p ng-repeat="email in member.emails">{{email.address}}</p>
+        </div>
 
-          <span class="md-2-line">
-            <span class="md-secondary"
-                  ng-show="!member.invited && !member.emails[0].verified">
-              Unverified
-            </span>
-            <span class="md-secondary"
-                  ng-show="member.emails[0].verified">
-              Verified
-            </span>
+        <div flex="30">
+          <p class="md-secondary"
+             ng-show="!member.invited && !member.emails[0].verified">
+            Unverified
+          </p>
+          <p class="md-secondary"
+             ng-show="member.emails[0].verified">
+            Verified
+          </p>
+        </div>
 
-          </span>
-        </p>
       </div>
     </md-list-item>
   </md-list>

@@ -2,15 +2,13 @@ angular.module('boxify').controller('BoxesDashboardMembersController',
   function($scope, $meteor, $timeout, box, boxifyCall){
     window.scope = $scope;
     window.meteor = $meteor;
+    window.box = box;
 
     $scope.newMember = {};
 
-    $timeout(function(){
-      $scope.members = $meteor.collection(function(){
-        return Meteor.users.find({boxId: box._id});
-      }).subscribe('members', box._id)
-    });
-
+    $scope.members = $meteor.collection(function(){
+      return Meteor.users.find({boxId: box._id});
+    }).subscribe('members', box._id)
 
 
     $scope.invite = function(member){

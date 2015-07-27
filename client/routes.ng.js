@@ -6,11 +6,6 @@ angular.module('boxify')
   .state('root', {
     url: '',
     abstract: true,
-    resolve: {
-      currentUser: ["$meteor", function($meteor){
-        return $meteor.waitForUser();
-      }],
-    }
   })
   .state('root.home', {
     url: '',
@@ -31,11 +26,22 @@ angular.module('boxify')
       }
     },
     resolve: {
-      box: ["$meteor", function($meteor){
-        var user = Meteor.user();
-        if (user && user._id) {
-          return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
+      currentUser: ["$meteor", function($meteor){
+        return $meteor.requireUser();
+      }],
+      boxesSubscription: ["$meteor", function($meteor){
+        return $meteor.subscribe('boxes');
+      }],
+      box: ["$meteor", "currentUser", "$q", "boxesSubscription", function($meteor, currentUser, $q){
+        var box = $meteor.object(Boxes, {ownerId: currentUser._id});
+
+        if(!box._id) {
+          var deferred = $q.defer();
+          deferred.reject('NOT_FOUND');
+          return deferred.promise;
         }
+
+        return box;
       }],
     }
   })
@@ -50,13 +56,7 @@ angular.module('boxify')
     resolve: {
       subscribe: ["$meteor", function($meteor) {
         return $meteor.subscribe('members');
-      }],
-      box: ["$meteor", function($meteor){
-        var user = Meteor.user();
-        if (user) {
-          return $meteor.object(Boxes, {ownerId: Meteor.user()._id}).subscribe('boxes');
-        }
-      }],
+      }]
     }
   })
   .state('root.dashboard.settings', {
