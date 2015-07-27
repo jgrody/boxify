@@ -8,7 +8,7 @@ function($scope, $meteor, box, boxifyDialog){
   $scope.openAddMemberDialog = function(ev){
     return boxifyDialog.show({
       controller: 'DashboardMembersAddController',
-      templateUrl: 'client/boxes/dashboard/members/add/template.ng.html',
+      templateUrl: 'client/dashboard/members/add/template.ng.html',
       parent: angular.element(document.body),
       targetEvent: ev,
       locals: {

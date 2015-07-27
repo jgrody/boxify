@@ -50,7 +50,7 @@ angular.module('boxify')
     views: {
       'content': {
         controller: 'BoxesDashboardMembersController',
-        templateUrl: 'client/boxes/dashboard/members/template.ng.html',
+        templateUrl: 'client/dashboard/members/template.ng.html',
       }
     },
     resolve: {
@@ -64,7 +64,7 @@ angular.module('boxify')
     views: {
       'content': {
         // controller: 'BoxesDashboardMembersController',
-        templateUrl: 'client/boxes/dashboard/settings/template.ng.html',
+        templateUrl: 'client/dashboard/settings/template.ng.html',
       }
     }
   })
