@@ -1,6 +1,6 @@
 angular.module('boxify').controller('BoxesDashboardMembersController',
-function($scope, $meteor, box, boxifyDialog){
-    
+function($scope, $meteor, box, boxifyCall, boxifyDialog){
+
   $scope.members = $meteor.collection(function(){
     return Meteor.users.find({boxId: box._id});
   }).subscribe('members', box._id)
@@ -17,7 +17,17 @@ function($scope, $meteor, box, boxifyDialog){
     })
   }
 
-  $scope.deleteUser = function(member){
-    console.log("member: ", member);
+  $scope.deleteUser = function($event, member){
+    var confirm = boxifyDialog.confirm()
+      .parent(angular.element(document.body))
+      .title('Are you sure you want to delete this member?')
+      .ariaLabel('Delete member')
+      .ok('Yes')
+      .cancel('Cancel')
+      .targetEvent($event);
+
+    boxifyDialog.show(confirm).then(function(){
+      return boxifyCall('deleteMember', { member: member })
+    })
   }
 });

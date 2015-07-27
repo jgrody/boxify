@@ -10,6 +10,10 @@ function($mdDialog){
       return $mdDialog.show(angular.extend({}, defaultOptions, options));
     },
 
+    confirm: function(){
+      return $mdDialog.confirm();
+    },
+
     hide: function(){
       return $mdDialog.hide();
     }

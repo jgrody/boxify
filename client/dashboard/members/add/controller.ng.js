@@ -1,8 +1,5 @@
-angular.module('boxify')
-.controller('DashboardMembersAddController',
+angular.module('boxify').controller('DashboardMembersAddController',
 function($scope, box, boxifyCall, $mdDialog){
-  window.scope = $scope;
-
   $scope.newMember = {};
   $scope.close = $mdDialog.hide;
 
@@ -42,11 +39,7 @@ function($scope, box, boxifyCall, $mdDialog){
       return Math.random().toString(36).substr(2);
     };
 
-    var token = function() {
-      return rand() + rand();
-    };
-
-    return token();
+    return rand();
   }
 
   function setInvited(member){
