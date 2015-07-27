@@ -29,7 +29,7 @@ function($scope, box, boxifyCall, $mdDialog){
         if (!userId.error){
           $scope.invite({_id: userId});
         }
-      })
+      }).then($scope.close)
     }
   }
 
