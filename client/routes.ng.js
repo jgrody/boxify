@@ -1,6 +1,9 @@
 angular.module('boxify')
 .config(function($urlRouterProvider, $stateProvider, $locationProvider){
-  $locationProvider.html5Mode(true);
+  // To allow specs to run and not complain about setting a <base href>
+  if (!window.location.origin.match('localhost')){
+    $locationProvider.html5Mode(true);
+  }
 
   $stateProvider
   .state('root', {

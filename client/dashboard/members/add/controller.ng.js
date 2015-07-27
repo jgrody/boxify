@@ -13,7 +13,7 @@ function($scope, box, boxifyCall, $mdDialog){
   }
 
   $scope.add = function(newMember){
-    if (newMember.email && isEmail(newMember.email)) {
+    if (newMember.email && !isEmail(newMember.email).error) {
       return boxifyCall('createMember', {
         boxId: box._id,
         email: newMember.email,

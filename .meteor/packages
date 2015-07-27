@@ -14,3 +14,6 @@ planettraining:material-design-icons
 fourseven:scss
 digilord:sugarjs
 email
+sanjo:jasmine
+velocity:html-reporter
+angular:angular-mocks
