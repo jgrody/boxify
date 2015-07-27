@@ -1,7 +1,8 @@
 angular.module('boxify', [
   'angular-meteor',
   'ui.router',
-  'ngMaterial'
+  'ngMaterial',
+  'ngMessages'
 ]);
 
 var themeIcons = function ($mdIconProvider) {

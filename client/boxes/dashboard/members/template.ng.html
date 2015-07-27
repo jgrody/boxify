@@ -1,41 +1,10 @@
 <section id="members">
   <div layout="row">
-    <form layout="row" name="newMemberForm" flex="80">
-      <md-input-container>
-        <input type="text"
-               ng-model="newMember.firstName"
-               placeholder="first name"
-               aria-label="first name" />
-      </md-input-container>
-      <md-input-container>
-        <input type="text"
-               ng-model="newMember.lastName"
-               placeholder="last name"
-               aria-label="last name" />
-      </md-input-container>
-      <md-input-container>
-        <input type="text"
-               ng-model="newMember.email"
-               placeholder="email"
-               aria-label="email" />
-      </md-input-container>
-
-    </form>
-
     <md-button class="md-fab md-secondary"
-               ng-click="addMember(newMember)"
+               ng-click="openAddMemberDialog()"
                aria-label="Add member">
       <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
     </md-button>
-
-
-<!--     <md-button class="md-secondary md-primary pad-none push-none"
-               ng-click="addMember(newMember)"
-               flex="20"
-               aria-label="add">
-      Add member
-    </md-button>
- -->    
   </div>
     
   <md-list>

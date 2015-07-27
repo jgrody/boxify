@@ -1,61 +1,18 @@
 angular.module('boxify').controller('BoxesDashboardMembersController',
-  function($scope, $meteor, $timeout, box, boxifyCall){
-    window.scope = $scope;
-    window.meteor = $meteor;
-    window.box = box;
-
-    $scope.newMember = {};
-
+  function($scope, $meteor, box, boxifyDialog){
     $scope.members = $meteor.collection(function(){
       return Meteor.users.find({boxId: box._id});
     }).subscribe('members', box._id)
 
-
-    $scope.invite = function(member){
-      return boxifyCall('inviteByOwner', {
-        boxId: box._id,
-        member: member
-      }).then(function(){
-        return setInvited(member);
-      })
-    }
-
-    $scope.addMember = function(newMember){
-      if (newMember.email && isEmail(newMember.email)) {
-        return boxifyCall('createMember', {
-          boxId: box._id,
-          email: newMember.email,
-          password: createToken(),
-          profile: {
-            firstName: newMember.firstName,
-            lastName: newMember.lastName
-          }
-        }).then(function(userId){
-          if (!userId.error){
-            $scope.invite({_id: userId});
-          }
-        }).then(function(){
-          $scope.newMember = {};
-        })
-      }
-    }
-
-    function createToken(){
-      var rand = function() {
-        return Math.random().toString(36).substr(2);
-      };
-
-      var token = function() {
-        return rand() + rand();
-      };
-
-      return token();
-    }
-
-    function setInvited(member){
-      return boxifyCall('setInvited', {
-        boxId: box._id,
-        member: member
+    $scope.openAddMemberDialog = function(ev){
+      return boxifyDialog.show({
+        controller: 'DashboardMembersAddController',
+        templateUrl: 'client/boxes/dashboard/members/add/template.ng.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        locals: {
+          box: box
+        }
       })
     }
   });
