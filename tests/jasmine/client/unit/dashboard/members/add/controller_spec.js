@@ -1,14 +1,14 @@
 var $mdDialog = { close: jasmine.createSpy() }
 
 describe('DashboardMembersAddController', function() {
-  var $scope, box, boxifyCall, deferred;
+  var $scope, box, boxifyCall, toast, deferred;
 
   beforeEach(module('boxify'));
 
   beforeEach(inject(function($rootScope, $controller, $q){
     $scope = $rootScope.$new();
     box = {_id: 'ABC123'};
-
+    toast = jasmine.createSpy();
 
     boxifyCall = jasmine.createSpy().and.callFake(function(){
       deferred = $q.defer();
@@ -18,7 +18,8 @@ describe('DashboardMembersAddController', function() {
     $controller('DashboardMembersAddController', {
       $scope: $scope,
       box: box,
-      boxifyCall: boxifyCall
+      boxifyCall: boxifyCall,
+      toast: toast
     })
   }));
 
@@ -97,6 +98,18 @@ describe('DashboardMembersAddController', function() {
       $scope.$apply();
 
       expect($scope.close).toHaveBeenCalled()
+    });
+
+    it('toasts a success message', function() {
+      var member = { email: "valid@email.com" };
+      $scope.add(member);
+
+      deferred.resolve('ABC123');
+      $scope.$apply();
+
+      expect(toast).toHaveBeenCalledWith(jasmine.objectContaining({
+        type: "success"
+      }))
     });
   });
 });
