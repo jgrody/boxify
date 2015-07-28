@@ -15,20 +15,22 @@
         ng-repeat="member in members"
         layout="row">
 
-      <div class="md-list-item-text" flex="70">
+      <div class="md-list-item-text" flex="80">
         <h3>{{member.profile.firstName}} {{member.profile.lastName}}</h3>
         <h4 ng-repeat="email in member.emails">{{email.address}}</h4>
 
-        <p ng-show="!member.invited && !member.emails[0].verified">
-          Unverified
+        <p style="color: red;"
+           ng-show="!member.invited && !member.emails[0].verified">
+          Pending
         </p>
 
-        <p ng-show="member.emails[0].verified">Verified</p>
+        <p style="color: green;"
+           ng-show="member.emails[0].verified">Verified</p>
       </div>
 
-      <div flex="30" class="md-secondary">
+      <div class="md-secondary">
         <md-button
-            class="md-fab md-mini md-warn"
+            class="md-fab md-mini md-hue-3"
             ng-click="deleteUser($event, member)"
             aria-label="Delete User">
           <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
