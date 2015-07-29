@@ -70,6 +70,15 @@ angular.module('boxify')
       }
     }
   })
+  .state('root.dashboard.pricing', {
+    url: '/pricing',
+    views: {
+      'content': {
+        // controller: 'BoxesDashboardMembersController',
+        templateUrl: 'client/dashboard/pricing/template.ng.html',
+      }
+    }
+  })
   .state('root.members', {
     url: '/members',
     abstract: true,

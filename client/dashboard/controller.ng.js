@@ -8,6 +8,10 @@ angular.module('boxify').controller('BoxesDashboardController',
         sref: 'root.dashboard.members'
       },
       {
+        title: 'Pricing',
+        sref: 'root.dashboard.pricing'
+      },
+      {
         title: 'Settings',
         sref: 'root.dashboard.settings'
       }
