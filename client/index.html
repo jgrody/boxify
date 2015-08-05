@@ -30,7 +30,8 @@
         <div ng-show="$root.currentUser">
           {{ $root.currentUser }}
         </div>
-        <md-button class="nav-link pull-right"
+        <md-button id="logout-link"
+                   class="nav-link pull-right"
                    ng-href="/logout"
                    ng-show="$root.currentUser">
           Logout

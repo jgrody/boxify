@@ -22,7 +22,8 @@
         </md-icon>
         <md-input-container flex>
           <label>First name</label>
-          <input type="text"
+          <input id="first-name-field"
+                 type="text"
                  name="firstName"
                  ng-model="newMember.firstName"
                  aria-label="first name" />
@@ -30,7 +31,8 @@
         </md-input-container>
         <md-input-container flex>
           <label>Last Name</label>
-          <input type="text"
+          <input id="last-name-field"
+                 type="text"
                  name="lastName"
                  ng-model="newMember.lastName"
                  aria-label="last name" />
@@ -44,10 +46,11 @@
         </md-icon>
         <md-input-container flex>
         <label>Email</label>
-        <input type="email"
+        <input id="email-field"
+               type="email"
                required
                name="email"
-               ng-model-options="{ debounce: { 'default': 300, 'blur': 0 } }"
+               ng-model-options="{ debounce: { 'default': 100, 'blur': 0 } }"
                ng-model="newMember.email"
                aria-label="email" />
 
@@ -65,6 +68,7 @@
 
   <div class="md-actions" layout="row">
     <md-button
+        id="add-member"
         ng-click="add(newMember)"
         ng-disabled="submitDisabled()"
         class="md-primary">

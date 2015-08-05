@@ -1,6 +1,6 @@
 <section id="members">
   <div layout="row" layout-align="end center">
-    <md-button class="md-fab"
+    <md-button class="md-fab add-member"
                style="margin-right: 16px;"
                ng-click="openAddMemberDialog()"
                aria-label="Add member">
@@ -16,21 +16,28 @@
         layout="row">
 
       <div class="md-list-item-text" flex="80">
-        <h3>{{member.profile.firstName}} {{member.profile.lastName}}</h3>
-        <h4 ng-repeat="email in member.emails">{{email.address}}</h4>
+        <h3 class="member-name">
+          {{member.profile.firstName}} {{member.profile.lastName}}
+        </h3>
+        <h4 class="member-email"
+            ng-repeat="email in member.emails">
+          {{email.address}}
+        </h4>
 
-        <p style="color: red;"
+        <p class="member-status-pending"
+           style="color: red;"
            ng-show="!member.invited && !member.emails[0].verified">
           Pending
         </p>
 
-        <p style="color: green;"
+        <p class="member-status-verified"
+           style="color: green;"
            ng-show="member.emails[0].verified">Verified</p>
       </div>
 
       <div class="md-secondary">
         <md-button
-            class="md-fab md-mini md-hue-3"
+            class="md-fab md-mini md-hue-3 delete-member"
             ng-click="deleteUser($event, member)"
             aria-label="Delete User">
           <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
