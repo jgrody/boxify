@@ -7,3 +7,8 @@
 @import "./helpers/_pull.css.scss";
 @import "./helpers/_typography.css.scss";
 @import "./helpers/_width.css.scss";
+
+#site-title {
+  display: inline-block;
+  vertical-align: middle;
+}

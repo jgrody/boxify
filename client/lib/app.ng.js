@@ -15,7 +15,8 @@ var themeIcons = function ($mdIconProvider) {
     .iconSet("toggle", spritePath("svg-sprite-toggle"))
     .iconSet("navigation", spritePath("svg-sprite-navigation"))
     .iconSet("image", spritePath("svg-sprite-image"))
-    .iconSet("maps", spritePath("svg-sprite-maps"));
+    .iconSet("maps", spritePath("svg-sprite-maps"))
+    .iconSet("hardware", spritePath("svg-sprite-hardware"));
 };
 
 angular.module('boxify')
