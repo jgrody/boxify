@@ -29,4 +29,12 @@ function($scope, $state, $meteor, $mdSidenav, box){
       $state.go(sref);
     }
 
+}).filter('initials', function(){
+  return function(member){
+    member = member.profile || {};
+    var firstName = member.firstName || "";
+    var lastName = member.lastName || "";
+    var initial = firstName[0] + lastName[0];
+    return (initial || "").toUpperCase();
+  }
 });

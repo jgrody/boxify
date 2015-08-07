@@ -12,7 +12,9 @@
     <md-item ng-repeat="member in members">
       <md-item-content class="position-relative">
         <div class="md-tile-left inset" hide-sm>
-          <user-avatar></user-avatar>
+          <md-button class="md-fab">
+            {{member | initials}}
+          </md-button>
         </div>
         <div class="md-tile-content">
           <h3 class="member-name">
@@ -43,6 +45,8 @@
           </div>
         </div>
       </md-item-content>
+      <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+      <md-divider hide-gt-sm ng-if="!$last"></md-divider>
     </md-item>
   </md-list>
     
