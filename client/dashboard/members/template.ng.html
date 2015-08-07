@@ -1,15 +1,52 @@
 <section id="members">
-  <div layout="row" layout-align="end center">
-    <md-button class="md-fab add-member"
-               style="margin-right: 16px;"
-               ng-click="openAddMemberDialog()"
-               aria-label="Add member">
-      <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
-      <md-tooltip md-direction="left"> Add Member </md-tooltip>
-    </md-button>
-  </div>
-    
+  <h2>Members</h2>
+  <md-button
+      class="md-fab md-fab-bottom-right"
+      aria-label="Add"
+      ng-click="openAddMemberDialog()">
+    <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
+      <md-tooltip md-direction="top">Add Member</md-tooltip>
+  </md-button>
+
   <md-list>
+    <md-item ng-repeat="member in members">
+      <md-item-content class="position-relative">
+        <div class="md-tile-left inset" hide-sm>
+          <user-avatar></user-avatar>
+        </div>
+        <div class="md-tile-content">
+          <h3 class="member-name">
+            {{member.profile.firstName}} {{member.profile.lastName}}
+          </h3>
+          <h4 class="member-email" ng-repeat="email in member.emails">
+            {{email.address}}
+          </h4>
+          <p class="member-status-pending"
+             style="color: red;"
+             ng-show="!member.invited && !member.emails[0].verified">
+            Pending
+          </p>
+          <p class="member-status-verified"
+             style="color: green;"
+             ng-show="member.emails[0].verified">
+           Verified
+          </p>
+
+          <div class="md-secondary">
+            <md-button
+                class="md-fab md-mini md-hue-3 delete-member"
+                ng-click="deleteUser($event, member)"
+                aria-label="Delete User">
+              <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
+              <md-tooltip> Delete </md-tooltip>
+            </md-button>
+          </div>
+        </div>
+      </md-item-content>
+    </md-item>
+  </md-list>
+    
+  <!-- <md-list>
     <md-list-item
         class="md-3-line position-relative"
         ng-repeat="member in members"
@@ -47,5 +84,5 @@
 
       <md-divider></md-divider>
     </md-list-item>
-  </md-list>
+  </md-list> -->
 </section>

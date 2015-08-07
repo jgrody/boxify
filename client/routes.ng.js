@@ -15,6 +15,9 @@ angular.module('boxify')
     views: {
       'master@': {
         templateUrl: 'client/layouts/home.ng.html'
+      },
+      'header': {
+        templateUrl: 'client/layouts/navbar.ng.html'
       }
     }
   })
@@ -65,7 +68,7 @@ angular.module('boxify')
     url: '/settings',
     views: {
       'content': {
-        // controller: 'BoxesDashboardMembersController',
+        controller: 'BoxesDashboardSettingsController',
         templateUrl: 'client/dashboard/settings/template.ng.html',
       }
     }

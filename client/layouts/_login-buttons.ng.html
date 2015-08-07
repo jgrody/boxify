@@ -1,0 +1,22 @@
+<md-button id="login-btn"
+           class="nav-link pull-right"
+           ng-href="/login"
+           ng-hide="$root.currentUser">
+  Login
+</md-button>
+
+<md-button class="nav-link pull-right"
+           ng-href="/register"
+           ng-hide="$root.currentUser">
+  Sign up
+</md-button>
+
+<div ng-show="$root.currentUser">
+  {{ $root.currentUser }}
+</div>
+<md-button id="logout-link"
+           class="nav-link pull-right"
+           ng-href="/logout"
+           ng-show="$root.currentUser">
+  Logout
+</md-button>

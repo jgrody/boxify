@@ -16,11 +16,34 @@ var themeIcons = function ($mdIconProvider) {
     .iconSet("navigation", spritePath("svg-sprite-navigation"))
     .iconSet("image", spritePath("svg-sprite-image"))
     .iconSet("maps", spritePath("svg-sprite-maps"))
-    .iconSet("hardware", spritePath("svg-sprite-hardware"));
+    .iconSet("hardware", spritePath("svg-sprite-hardware"))
+    .iconSet("editor", spritePath("svg-sprite-editor"))
 };
 
+var palettes = function($mdThemingProvider){
+  var customBlueMap = $mdThemingProvider
+    .extendPalette('light-blue', {
+      'contrastDefaultColor': 'light',
+      'contrastDarkColors': ['50'],
+      '50': 'ffffff'
+    });
+
+  $mdThemingProvider.definePalette('customBlue', customBlueMap);
+
+  $mdThemingProvider
+  .theme('default')
+    .primaryPalette('customBlue', {
+      'default': '500',
+      'hue-1': '50'
+    }).accentPalette('pink');
+
+  $mdThemingProvider.theme('input', 'default').primaryPalette('grey')
+}
+
+
 angular.module('boxify')
-  .config(themeIcons);
+  .config(themeIcons)
+  .config(palettes);
 
 function spritePath(svg) {
   return [
