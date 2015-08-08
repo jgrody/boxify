@@ -2,7 +2,9 @@ angular.module('boxify', [
   'angular-meteor',
   'ui.router',
   'ngMaterial',
-  'ngMessages'
+  'ngMessages',
+  'ngFileUpload',
+  'ngImgCrop'
 ]);
 
 var themeIcons = function ($mdIconProvider) {

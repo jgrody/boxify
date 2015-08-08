@@ -17,3 +17,8 @@ email
 sanjo:jasmine
 angular:angular-mocks
 xolvio:cucumber
+cfs:standard-packages
+cfs:gridfs
+danialfarid:ng-file-upload
+matthieuh:ng-img-crop
+cfs:graphicsmagick

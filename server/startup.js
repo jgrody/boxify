@@ -1,5 +1,6 @@
 Meteor.startup(function () {
   Meteor.users.remove({});
+  Images.remove({});
 
   var ownerId, boxId, memberId;
 

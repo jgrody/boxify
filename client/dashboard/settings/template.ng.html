@@ -26,6 +26,17 @@
         New members will receive this amount of BoxCred upon sign-up that they may use to redeem for membership discounts or any other merchandise you sell at your box.
       </p>
     </div>
-    <md-divider></md-divider>
+  </div>
+  
+  <md-button
+      class="md-raised"
+      ng-click="openAddImageModal()">
+    Add Photo
+  </md-button>
+
+  <div layout="row" class="images-container-title">
+    <div class="party-image-container" ng-repeat="image in images">
+      <img draggable="false" ng-src="{{ image.url({store: 'thumbnail'}) }}"/><br/>
+    </div>
   </div>
 </section>
