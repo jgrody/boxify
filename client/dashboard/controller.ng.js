@@ -27,6 +27,7 @@ function($scope, $state, $meteor, $mdSidenav, box){
 
     $scope.navigateTo = function(sref){
       $state.go(sref);
+      $mdSidenav('left').toggle();
     }
 
 }).filter('initials', function(){
