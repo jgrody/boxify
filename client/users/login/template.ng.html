@@ -1,35 +1,43 @@
-<md-content layout="row">
+<md-content layout="row" flex="100">
   <span flex></span>
-  <md-whiteframe layout="column" flex="50">
-    <div ng-show="lc.error" class="md-warn"><small>{{ lc.error }}</small></div>
-    <form layout="column">
-      <md-input-container>
-        <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
-        <input id="email"
-               type="email"
-               ng-model="lc.credentials.email"
-               placeholder="email"
-               aria-label="email" />
-      </md-input-container>
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input id="password"
-               type="password"
-               ng-model="lc.credentials.password"
-               placeholder="password"
-               aria-label="password" />
-      </md-input-container>
-      <md-button id="login-form-submit"
-                 class="md-raised md-primary"
-                 ng-click="lc.login()"
-                 aria-label="login">
-        Sign In
-      </md-button>
-    </form>
-    <div layout="row" layout-align="space-around center">
-      <a href="/resetpw">Forgot password?</a>
-      <a href="/register">Create an account</a>
-    </div>
-  </md-whiteframe>
+  <md-card id="login-card" layout="column" flex="50" class="inset push-top">
+    <md-card-content class="inset">
+      <div ng-show="lc.error" class="md-warn"><small>{{ lc.error }}</small></div>
+      <form layout="column">
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="content:ic_mail_24px"></md-icon> -->
+          <label>Email</label>
+          <input id="email"
+                 type="email"
+                 ng-model="lc.credentials.email"
+                 placeholder="email"
+                 aria-label="email" />
+        </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon> -->
+          <label>Password</label>
+          <input id="password"
+                 type="password"
+                 ng-model="lc.credentials.password"
+                 placeholder="password"
+                 aria-label="password" />
+        </md-input-container>
+        <md-button id="login-form-submit"
+                   class="md-raised md-primary"
+                   ng-click="lc.login()"
+                   aria-label="login">
+          Sign In
+        </md-button>
+      </form>
+      <div layout="row" layout-align="space-around center">
+        <md-button md-no-ink class="md-primary">
+          <a href="/resetpw">Forgot password?</a>
+        </md-button>
+        <md-button md-no-ink class="md-primary">
+          <a href="/register">Create an account</a>
+        </md-button>
+      </div>
+    </md-card-content>
+  </md-card>
   <span flex></span>
 </md-content>

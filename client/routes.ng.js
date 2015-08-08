@@ -10,14 +10,13 @@ angular.module('boxify')
     abstract: true,
   })
   .state('root.home', {
-    url: '',
-    abstract: true,
+    url: '/',
     views: {
+      'header@': {
+        templateUrl: 'client/layouts/navbar.ng.html'
+      },
       'master@': {
         templateUrl: 'client/layouts/home.ng.html'
-      },
-      'header': {
-        templateUrl: 'client/layouts/navbar.ng.html'
       }
     }
   })
@@ -84,7 +83,6 @@ angular.module('boxify')
   })
   .state('root.members', {
     url: '/members',
-    abstract: true,
     views: {
       'master@': {
         controller: 'BoxesMembersController',
@@ -104,6 +102,9 @@ angular.module('boxify')
   .state('login', {
     url: '/login',
     views: {
+      'header@' : {
+        templateUrl: 'client/layouts/navbar.ng.html'
+      },
       'master@': {
         templateUrl: 'client/users/login/template.ng.html',
         controller: 'LoginController',
@@ -114,6 +115,9 @@ angular.module('boxify')
   .state('register',{
     url: '/register',
     views: {
+      'header@' : {
+        templateUrl: 'client/layouts/navbar.ng.html'
+      },
       'master@': {
         templateUrl: 'client/users/register/template.ng.html',
         controller: 'RegisterController',
@@ -124,6 +128,9 @@ angular.module('boxify')
   .state('resetpw', {
     url: '/resetpw',
     views: {
+      'header@' : {
+        templateUrl: 'client/layouts/navbar.ng.html'
+      },
       'master@': {
         templateUrl: 'client/users/reset/template.ng.html',
         controller: 'ResetController',
@@ -134,6 +141,9 @@ angular.module('boxify')
   .state('setPassword', {
     url: '/reset-password/:token?:memberId',
     views: {
+      'header@' : {
+        templateUrl: 'client/layouts/navbar.ng.html'
+      },
       'master@': {
         templateUrl: 'client/users/set_password/template.ng.html',
         controller: 'SetPasswordController',
@@ -144,6 +154,9 @@ angular.module('boxify')
   .state('enrollAccount', {
     url: '/enroll-account/:token',
     views: {
+      'header@' : {
+        templateUrl: 'client/layouts/navbar.ng.html'
+      },
       'master@': {
         templateUrl: 'client/users/set_password/template.ng.html',
         controller: 'SetPasswordController',

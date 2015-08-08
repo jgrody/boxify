@@ -1,63 +1,72 @@
-<md-content layout="row" class="push-top">
+<md-content layout="row" flex="100">
   <span flex></span>
-  <md-whiteframe layout="column" flex="50">
-    <div ng-show="rc.error" class="md-warn">
-      <small>{{ rc.error }}</small>
-    </div>
-    <form layout="column" novalidate>
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input type="name"
-               required
-               ng-model="rc.newBox.ownerName"
-               placeholder="Your Name"
-               aria-label="your name" />
-      </md-input-container>
+  <md-card id="register-card" layout="column" flex="50" class="inset push-top">
+    <md-card-content class="inset">
+      <div ng-show="rc.error" class="md-warn">
+        <small>{{ rc.error }}</small>
+      </div>
+      <form layout="column" novalidate>
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon> -->
+          <label>Name</label>
+          <input type="name"
+                 required
+                 ng-model="rc.newBox.ownerName"
+                 placeholder="Your Name"
+                 aria-label="your name" />
+        </md-input-container>
 
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input type="box"
-               required
-               ng-model="rc.newBox.name"
-               placeholder="Box Name"
-               aria-label="box name" />
-      </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon> -->
+          <label>Box Name</label>
+          <input type="box"
+                 required
+                 ng-model="rc.newBox.name"
+                 placeholder="Box Name"
+                 aria-label="box name" />
+        </md-input-container>
 
-      <md-input-container>
-        <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
-        <input type="text"
-               required
-               ng-model="rc.credentials.email"
-               placeholder="Email"
-               aria-label="email" />
-      </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="content:ic_mail_24px"></md-icon> -->
+          <label>Email</label>
+          <input type="text"
+                 required
+                 ng-model="rc.credentials.email"
+                 placeholder="Email"
+                 aria-label="email" />
+        </md-input-container>
 
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input type="password"
-               required
-               ng-model="rc.credentials.password"
-               placeholder="Password"
-               aria-label="password" />
-      </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon> -->
+          <label>Password</label>
+          <input type="password"
+                 required
+                 ng-model="rc.credentials.password"
+                 placeholder="Password"
+                 aria-label="password" />
+        </md-input-container>
 
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input type="password"
-               required
-               ng-model="rc.credentials.passwordConfirm"
-               placeholder="Confirm"
-               aria-label="password" />
-      </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon> -->
+          <label>Confirm</label>
+          <input type="password"
+                 required
+                 ng-model="rc.credentials.passwordConfirm"
+                 placeholder="Confirm"
+                 aria-label="password" />
+        </md-input-container>
 
-      <md-button class="md-raised md-primary"
-                 ng-click="rc.register()">
-        Create Account
-      </md-button>
-    </form>
-    <div layout="row" layout-align="end center">
-      <a href="/login">Login</a>
-    </div>
-  </md-whiteframe>
+        <md-button class="md-raised md-primary"
+                   ng-click="rc.register()">
+          Create Account
+        </md-button>
+      </form>
+      <div layout="row" layout-align="center center">
+        <md-button md-no-ink class="md-primary">
+          <a href="/login">Login</a>
+        </md-button>
+      </div>
+    </md-card-content>
+  </md-card>
   <span flex></span>
 </md-content>
