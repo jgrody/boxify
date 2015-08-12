@@ -5,7 +5,7 @@ angular.module('boxify')
 
   function AddLogoController($scope, $meteor, $rootScope, $state){
     window.scope = $scope;
-    $scope.myAreaCoords = {};
+    $scope.myAreaCoords = {w: 300, h: 125};
     $scope.image = {
       imageSrc: '',
       myCroppedImage: ''

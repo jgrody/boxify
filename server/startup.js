@@ -20,7 +20,8 @@ Meteor.startup(function () {
       ownerId: ownerId,
       name: 'The Hot Box',
       ownerName: 'Jack Grossmann',
-      members: []
+      members: [],
+      pricingTiers: []
     })
   }
 
@@ -38,6 +39,7 @@ Meteor.startup(function () {
     }
   }
   memberId = Accounts.createUser(member);
+  Boxes.update(boxId, { $addToSet: { members:  memberId }});
 
   Meteor.users.update({_id: memberId}, {$set: additionalProps});
 });

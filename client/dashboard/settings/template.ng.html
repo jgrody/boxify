@@ -1,42 +1,48 @@
-<section id="settings">
-  <div layout="column" class="">
-    <br>
-    <md-input-container class="md-icon-float">
-      <!-- Use floating label instead of placeholder -->
-      <label>Box Name</label>
-      <md-icon md-svg-icon="social:ic_location_city_24px"></md-icon>
-      <input ng-model="box.name" type="text">
-    </md-input-container>
+<div layout="row">
+  <md-content class="inset">
+    <h2>Settings</h2>
+  </md-content>
+</div>
 
-    <md-input-container class="md-icon-float pad-bottom-xxs" layout="row">
-      <label>BoxCred</label>
-      <md-icon md-svg-icon="editor:ic_attach_money_24px"></md-icon>
-      <input ng-model="box.initialCredit" min="0" type="number" required>
-    </md-input-container>
-    <div layout="column" class="push-left-lg">
-      <a href="#" 
-         class="boxcred-explanation-toggle push-top-xxs text-decoration-none"
-         ng-click="showExplanation = !showExplanation"
-         tabindex="-1">
-        What's this?
-      </a>
-      <p class="boxcred-explanation"
-         ng-show="showExplanation"
-         flex="90">
-        New members will receive this amount of BoxCred upon sign-up that they may use to redeem for membership discounts or any other merchandise you sell at your box.
-      </p>
-    </div>
-  </div>
-  
-  <md-button
-      class="md-raised"
-      ng-click="openAddImageModal()">
-    Add Photo
-  </md-button>
+<md-card>
+  <md-card-content>
+    <section id="settings">
+      <div layout="column" class="">
+        <br>
+        <md-input-container class="md-icon-float">
+          <!-- Use floating label instead of placeholder -->
+          <label>Box Name</label>
+          <md-icon md-svg-icon="social:ic_location_city_24px"></md-icon>
+          <input ng-model="box.name" type="text">
+        </md-input-container>
 
-  <div layout="row" class="images-container-title">
-    <div class="party-image-container" ng-repeat="image in images">
-      <img draggable="false" ng-src="{{ image.url({store: 'thumbnail'}) }}"/><br/>
-    </div>
-  </div>
-</section>
+        <md-input-container class="md-icon-float pad-bottom-xxs" layout="row">
+          <label>BoxCred</label>
+          <md-icon md-svg-icon="editor:ic_attach_money_24px"></md-icon>
+          <input ng-model="box.initialCredit" min="0" type="number" required>
+        </md-input-container>
+        <div layout="column" class="push-left-lg">
+          <a href="#"
+             class="boxcred-explanation-toggle push-top-xxs text-decoration-none"
+             ng-click="showExplanation = !showExplanation"
+             tabindex="-1">
+            What's this?
+          </a>
+          <p class="boxcred-explanation"
+             ng-show="showExplanation"
+             flex="90">
+            New members will receive this amount of BoxCred upon sign-up that they may use to redeem for membership discounts or any other merchandise you sell at your box.
+          </p>
+        </div>
+      </div>
+
+    <!--   <div layout="row" class="images-container-title">
+        <div class="party-image-container" ng-repeat="image in images">
+          <img draggable="false" ng-src="{{ image.url({store: 'thumbnail'}) }}"/><br/>
+          <img draggable="false" ng-src="{{ image.url() }}"/><br/>
+        </div>
+      </div>
+     -->
+    </section>
+  </md-card-content>
+</md-card>

@@ -76,7 +76,7 @@ angular.module('boxify')
     url: '/pricing',
     views: {
       'content': {
-        // controller: 'BoxesDashboardMembersController',
+        controller: 'BoxesDashboardPricingController',
         templateUrl: 'client/dashboard/pricing/template.ng.html',
       }
     }

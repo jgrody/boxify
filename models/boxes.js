@@ -66,11 +66,5 @@ Meteor.methods({
     });
 
     return userId;
-  },
-
-  update: function(opts){
-    opts = opts || null;
-
   }
 });
-

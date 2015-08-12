@@ -1,6 +1,9 @@
 angular.module('boxify', [
   'angular-meteor',
   'ui.router',
+  'ui.select',
+  'ngAria',
+  'ngSanitize',
   'ngMaterial',
   'ngMessages',
   'ngFileUpload',

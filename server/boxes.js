@@ -7,6 +7,9 @@ Meteor.publish("boxes", function () {
       ]},
       {$and:[
         {members: {$exists: true}}
+      ]},
+      {$and:[
+        {pricingTiers: {$exists: true}}
       ]}
     ]});
 });

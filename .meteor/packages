@@ -22,3 +22,6 @@ cfs:gridfs
 danialfarid:ng-file-upload
 matthieuh:ng-img-crop
 cfs:graphicsmagick
+angularui:ui-select
+angular:angular-aria
+angular:angular-sanitize

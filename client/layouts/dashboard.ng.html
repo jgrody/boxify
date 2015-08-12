@@ -31,11 +31,10 @@
 
   <md-content flex md-scroll-y>
     <ui-view layout="column" layout-fill layout-padding>
-      <div class="inset" hide-sm></div>
-      <div layout="row" layout-align="center center">
-        <md-card flex-gt-sm="90" flex-gt-md="90" flex-sm="90">
-          <md-card-content ui-view="content"></md-card-content>
-        </md-card>
+      <div flex-gt-sm="90"
+           flex-gt-md="90"
+           flex-sm="90"
+           ui-view="content">
       </div>
     </ui-view>
   </md-content>
