@@ -1,45 +1,80 @@
 angular.module('boxify').controller('BoxesDashboardPricingController',
-function($scope, $meteor, boxifyDialog, boxifyCall){
+function($scope, $meteor, box, boxifyDialog){
   window.scope = $scope;
-  $scope.boxes = $meteor.collection(Boxes).subscribe('boxes');
+  // Stops meteor reactivity for box so user can continue updating inputs
+  // and the browser won't automatically reload on them.
+  box.stop();
 
   $scope.tier = {
     checkins: 0,
     price: 0,
-    extras: [{ placeholder: 'Unlimited open gym...' }]
+    extras: [{}]
   }
   var blankTier = angular.copy($scope.tier);
 
-  $scope.addNewItem = function(index, tier){
-    tier.extras[index].disabled = true;
-    $scope.tier.extras.push({});
+  $scope.addNewItem = function(index, last, tier){
+    tier.extras[index].canDelete = true;
+
+    if (last) {
+      tier.extras.push({});
+    }
   }
 
-  $scope.addTier = function(tier){
-    $scope.box.pricingTiers.push(mapTier(tier));
-    // $scope.boxes.save($scope.box);
+  $scope.saveTier = function(tier){
+    tier = mapTier(tier);
+    $scope.toggleEditing(tier);
+    box.save();
+  }
+
+  $scope.cancelSave = function(tier){
+    box.reset();
+    $scope.toggleEditing(tier);
+    box.save();
+  }
+
+  $scope.toggleEditing = function(tier){
+    tier.editing = !tier.editing;
+  }
+
+  $scope.addExtra = function(tier){
+    tier.extras.push({})
   }
 
   $scope.deleteTier = function(tier){
-    $scope.box.pricingTiers.remove(tier);
+    var confirm = boxifyDialog.confirm()
+      .parent(angular.element(document.body))
+      .title('Are you sure you want to delete this tier?')
+      .ariaLabel('Delete Tier')
+      .ok('Yes')
+      .cancel('No')
+
+    boxifyDialog.show(confirm).then(function(){
+      return box.pricingTiers.remove(tier);
+    })
+  }
+
+  $scope.deleteExtra = function(tier, extra){
+    var confirm = boxifyDialog.confirm()
+      .parent(angular.element(document.body))
+      .title('Are you sure you want to delete this extra?')
+      .ariaLabel('Delete Extra')
+      .ok('Yes')
+      .cancel('No')
+
+    boxifyDialog.show(confirm).then(function(){
+      tier.extras.remove(extra);
+      return box.save();
+    })
+  }
+
+  $scope.addTier = function(ev){
+    box.pricingTiers.push(blankTier);
   }
 
   function mapTier(tier){
-    tier.extras = tier.extras.map('description').compact();
+    tier.extras = tier.extras.remove(function(extra){
+      return Object.isEmpty(extra);
+    });
     return tier;
   }
-
-  $scope.openAddTierDialog = function(ev){
-    $scope.box.pricingTiers.push(blankTier);
-    // return boxifyDialog.show({
-    //   controller: 'DashboardAddPriceTierController',
-    //   templateUrl: 'client/dashboard/pricing/add/template.ng.html',
-    //   parent: angular.element(document.body),
-    //   targetEvent: ev,
-    //   locals: {
-    //     box: box
-    //   }
-    // })
-  }
-
 })

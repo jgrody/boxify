@@ -1,0 +1,118 @@
+<md-content layout="row">
+  <section id="pricing">
+    <div layout="row">
+      <md-card flex="31" class="push-none">
+        <md-card-content>
+          <p class="price-tier-title md-title">Checkins</p>
+          <div layout="row">
+            <input class="md-display-3 price-selector-input"
+                   type="number"
+                   ng-model="tier.checkins"
+                   value="0"
+                   min="0" />
+          </div>
+          <div layout="row" layout-align="center center" class="push-top-sm">
+            <label class="push-top-xxs text-bold">Per</label>
+            <md-select
+                aria-label="Timeframe"
+                class="pad-none push-top-none push-left-xs"
+                placeholder="Select"
+                ng-model="tier.timeframe">
+              <md-option
+                  ng-repeat="state in ['Select', 'Week', 'Month', 'Year']"
+                  value="{{state}}">
+                {{state}}
+              </md-option>
+            </md-select>
+          </div>
+
+        </md-card-content>
+      </md-card>
+
+      <md-card flex="31" class="push-none">
+        <md-card-content>
+          <p class="price-tier-title md-title">Price (USD)</p>
+          <div layout="row">
+            <input class="md-display-3 price-selector-input"
+                   type="number"
+                   ng-model="tier.price"
+                   value="0"
+                   min="0" />
+          </div>
+        </md-card-content>
+      </md-card>
+
+      <md-card flex="31" class="push-none">
+        <md-card-content>
+          <p class="price-tier-title md-title">Extras</p>
+          <ul class="extras-list pad-none push-none">
+            <li layout="row" ng-repeat="extra in tier.extras track by $index">
+              <form name="newExtraForm"
+                    class="extras-list-input"
+                    ng-submit="addNewItem($index, $last, tier)"
+                    layout-padding
+                    layout="row"
+                    novalidate>
+                <md-input-container
+                    md-no-float
+                    flex="95"
+                    class="pad-none">
+                  <input ng-model="extra.description"
+                         ng-disabled="extra.canDelete"
+                         placeholder="{{extra.placeholder}}"
+                         aria-label="Add extra"
+                         flex="5"
+                         required>
+                </md-input-container>
+
+                <button type="button"
+                        class="btn-link"
+                        ng-if="!extra.canDelete"
+                        ng-class="{'btn-disabled': !extra.description || extra.canDelete}"
+                        ng-disabled="newExtraForm.$invalid || !extra.description || extra.canDelete"
+                        tabindex="-1">
+                  <md-icon ng-class="{
+                            'md-primary': extra.description,
+                            'md-default': !extra.description,
+                           }"
+                           md-svg-icon="navigation:ic_check_24px">
+                  </md-icon>
+                </button>
+                <button type="button"
+                        class="btn-link"
+                        ng-if="extra.canDelete"
+                        ng-click="deleteExtra(tier, extra)">
+                  <md-icon
+                      md-svg-icon="action:ic_delete_24px"
+                      aria-label="Delete extra">
+                  </md-icon>
+                </button>
+              </form>
+            </li>
+          </ul>
+        </md-card-content>
+        <div class="md-actions" layout="row" layout-align="end end">
+          <md-button class="md-fab md-mini md-fab-top-right"
+                     aria-label="Add extra"
+                     ng-click="addExtra(tier)"
+                     style="top: 0px;">
+            <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
+            <md-tooltip md-direction="top">Add Extra</md-tooltip>
+          </md-button>
+        </div>
+      </md-card>
+    </div>
+  </section>
+</md-content>
+<md-card class="push-none push-top-xs">
+  <md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+      <md-button class="md-raised md-primary" ng-click="saveTier(tier)">
+        Save
+      </md-button>
+      <md-button class="md-raised md-default" ng-click="cancelSave(tier)">
+        Cancel
+      </md-button>
+    </div>
+  </md-card-content>
+</md-card>
