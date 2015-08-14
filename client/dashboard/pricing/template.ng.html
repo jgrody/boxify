@@ -15,11 +15,11 @@
 <div id="pricing" layout="column" ng-if="box.pricingTiers.length">
   <section ng-repeat="tier in box.pricingTiers track by $index"
            class="position-relative">
-    <md-card class="push-top-none push-bottom-none md-whiteframe-z1">
+    <md-card class="push-top-none md-whiteframe-z2">
       <md-card-content
           layout="row"
           layout-fill
-          class="pad-xs">
+          class="pad-xs push-bottom-xxs">
         <!-- <md-button class="md-fab md-mini md-hue-3 price-tier-index-fab">
           {{$index + 1}}
         </md-button> -->
@@ -57,7 +57,11 @@
      </md-card-content>
     </md-card>
 
-   <div layout="row" layout-fill layout-padding ng-if="tier.editing">
+   <div layout="row"
+        layout-fill
+        layout-padding
+        class="pad-top-none"
+        ng-if="tier.editing">
      <div price-tier-form></div>
    </div>
   </section>

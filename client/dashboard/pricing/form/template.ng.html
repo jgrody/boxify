@@ -75,21 +75,7 @@
 
               <button type="button"
                       class="btn-link"
-                      ng-if="!extra.canDelete"
-                      ng-class="{'btn-disabled': !extra.description || extra.canDelete}"
-                      ng-disabled="newExtraForm.$invalid || !extra.description || extra.canDelete"
-                      tabindex="-1">
-                <md-icon ng-class="{
-                          'md-primary': extra.description,
-                          'md-default': !extra.description,
-                         }"
-                         md-svg-icon="navigation:ic_check_24px">
-                </md-icon>
-              </button>
-              <button type="button"
-                      class="btn-link"
-                      ng-if="extra.canDelete"
-                      ng-click="deleteExtra(tier, extra)">
+                      ng-click="deleteExtra(tier, $index)">
                 <md-icon
                     md-svg-icon="action:ic_delete_24px"
                     aria-label="Delete extra">
@@ -102,7 +88,8 @@
     </md-card>
   </div>
 </md-content>
-<md-card class="push-none push-top-xs">
+<md-divider></md-divider>
+<md-card class="push-none">
   <md-card-content>
     <div class="md-actions" layout="row" layout-align="end center">
       <md-button class="md-raised md-primary" ng-click="saveTier(tier)">
