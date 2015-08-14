@@ -57,3 +57,17 @@
     </section>
   </md-card-content>
 </md-card>
+
+
+<div layout="column"
+     layout-align="center center"
+     ng-if="!members.length">
+  <md-content class="no-results-logo-content">
+    <md-icon
+        md-svg-icon="social:ic_people_24px"
+        class="no-results-logo">
+    </md-icon>
+  </md-content>
+  <h1 class="md-headline push-none">No members have been added yet</h1>
+  <p class="md-subhead">Add one and it will show up here.</p>
+</div>
