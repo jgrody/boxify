@@ -1,6 +1,6 @@
 <div layout="row">
   <md-content class="inset">
-    <h2>Settings</h2>
+    <h2 class="push-bottom-none">Settings</h2>
   </md-content>
 </div>
 
@@ -45,4 +45,16 @@
      -->
     </section>
   </md-card-content>
+  <div class="md-actions" layout="row" layout-align="end center">
+    <md-button
+        class="md-primary"
+        ng-click="save()">
+      Save
+    </md-button>
+    <md-button
+        class="md-default"
+        ng-click="cancel()">
+      Cancel
+    </md-button>
+  </div>
 </md-card>

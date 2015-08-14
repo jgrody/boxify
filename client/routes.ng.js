@@ -37,7 +37,7 @@ angular.module('boxify')
         return $meteor.subscribe('boxes');
       }],
       box: ["$meteor", "currentUser", "$q", "boxesSubscription", function($meteor, currentUser, $q){
-        var box = $meteor.object(Boxes, {ownerId: currentUser._id});
+        var box = $meteor.object(Boxes, {ownerId: currentUser._id}, false);
 
         if(!box._id) {
           var deferred = $q.defer();

@@ -1,7 +1,6 @@
-angular.module('boxify')
-.controller('BoxesDashboardSettingsController',
-  function($scope, $rootScope, $meteor, boxifyDialog){
-  $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
+angular.module('boxify').controller('BoxesDashboardSettingsController',
+function($scope, box, $rootScope, $meteor, boxifyDialog, toast){
+  // $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
 
   function AddLogoController($scope, $meteor, $rootScope, $state){
     window.scope = $scope;
@@ -70,6 +69,22 @@ angular.module('boxify')
       // We will add here later the logic to handle the link between the image and the party
     });
   };
+
+  $scope.save = function(){
+    return box.save().then(function(){
+      toast({
+        type: "success",
+        title: "Success",
+        message: "Settings updated successfully."
+      })
+    });
+  }
+
+  $scope.cancel = function(){
+    // console.log('reset');
+    box.reset();
+  }
+
 }).directive('customOnChange', function () {
   return {
     restrict: 'A',
