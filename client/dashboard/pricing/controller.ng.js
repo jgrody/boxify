@@ -3,7 +3,6 @@ function($scope, $meteor, box, boxifyDialog, toast){
   window.scope = $scope;
   // Stops meteor reactivity for box so user can continue updating inputs
   // and the browser won't automatically reload on them.
-  box.stop();
 
   var blankTier = {
     checkins: 0,
@@ -51,7 +50,17 @@ function($scope, $meteor, box, boxifyDialog, toast){
       .cancel('No')
 
     boxifyDialog.show(confirm).then(function(){
-      return box.pricingTiers.remove(tier);
+      removeTier(tier);
+    })
+  }
+  function removeTier(tier){
+    box.pricingTiers.remove(tier);
+    box.save().then(function(){
+      toast({
+        type: "success",
+        title: "Success",
+        message: "Tier deleted."
+      })
     })
   }
 
@@ -60,7 +69,7 @@ function($scope, $meteor, box, boxifyDialog, toast){
   }
 
   $scope.addTier = function(){
-    box.pricingTiers.push(blankTier);
+    box.pricingTiers.push(angular.copy(blankTier));
   }
 
   function mapTier(tier){
