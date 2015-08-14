@@ -5,12 +5,13 @@ function($scope, $meteor, box, boxifyDialog){
   // and the browser won't automatically reload on them.
   box.stop();
 
-  $scope.tier = {
+  var blankTier = {
     checkins: 0,
     price: 0,
-    extras: [{}]
+    extras: [{}],
+    editing: true
   }
-  var blankTier = angular.copy($scope.tier);
+  // var blankTier = angular.copy($scope.tier);
 
   $scope.addNewItem = function(index, last, tier){
     tier.extras[index].canDelete = true;
@@ -22,6 +23,7 @@ function($scope, $meteor, box, boxifyDialog){
 
   $scope.saveTier = function(tier){
     tier = mapTier(tier);
+    tier.extras.each(function(extra){ extra.canDelete = true })
     $scope.toggleEditing(tier);
     box.save();
   }
@@ -67,7 +69,7 @@ function($scope, $meteor, box, boxifyDialog){
     })
   }
 
-  $scope.addTier = function(ev){
+  $scope.addTier = function(){
     box.pricingTiers.push(blankTier);
   }
 

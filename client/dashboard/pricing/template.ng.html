@@ -1,18 +1,18 @@
-<div layout="row">
+<div layout="row" ng-if="box.pricingTiers.length">
   <md-content class="inset">
     <h2>Pricing Tiers</h2>
   </md-content>
 </div>
 
-<div layout="column">
-  <md-button
-      class="md-fab md-fab-bottom-right"
-      aria-label="Add"
-      ng-click="addTier()">
-    <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
-    <md-tooltip md-direction="top">Add Tier</md-tooltip>
-  </md-button>
+<md-button
+    class="md-fab md-fab-bottom-right"
+    aria-label="Add"
+    ng-click="addTier()">
+  <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
+  <md-tooltip md-direction="top">Add Tier</md-tooltip>
+</md-button>
 
+<div id="pricing" layout="column" ng-if="box.pricingTiers.length">
   <section ng-repeat="tier in box.pricingTiers track by $index"
            class="position-relative">
     <md-card class="push-top-none push-bottom-none md-whiteframe-z1">
@@ -20,12 +20,20 @@
           layout="row"
           layout-fill
           class="pad-xs">
-        <strong flex="90" class="pad-top-xs pad-left-xs pad-bottom-xs">
+        <!-- <md-button class="md-fab md-mini md-hue-3 price-tier-index-fab">
+          {{$index + 1}}
+        </md-button> -->
+        <strong flex="85"
+                flex-sm="75"
+                class="pad-top-xs pad-left-xs pad-bottom-xs">
          {{tier.checkins}} Checkins
          <span ng-if="tier.timeframe && tier.timeframe != 'Select'"> per {{tier.timeframe}} </span>
          for ${{tier.price}}
        </strong>
-       <div flex="10" class="">
+       <div flex="15"
+            flex-sm="25"
+            class="position-absolute"
+            style="right: 25px;">
         <md-button
             class="md-primary push-none"
             ng-click="toggleEditing(tier);"
@@ -53,4 +61,17 @@
      <div price-tier-form></div>
    </div>
   </section>
+</div>
+
+<div layout="column"
+     layout-align="center center"
+     ng-if="!box.pricingTiers.length">
+  <md-content class="no-results-logo-content">
+    <md-icon
+        md-svg-icon="maps:ic_local_atm_24px"
+        class="no-results-logo">
+    </md-icon>
+  </md-content>
+  <h1 class="md-headline push-none">No pricing tiers yet</h1>
+  <p class="md-subhead">Add one and it will show up here.</p>
 </div>
