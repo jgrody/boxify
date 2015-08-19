@@ -12,6 +12,13 @@ function($scope, $meteor, box, boxifyDialog, toast){
     canDelete: true
   }
 
+  $scope.timeframes = [
+    { name: 'Per', value: undefined },
+    { name: 'Week', value: 'week' },
+    { name: 'Month', value: 'month' },
+    { name: 'Year', value: 'year' },
+  ]
+
   $scope.addNewItem = function(index, last, tier){
     tier.extras[index].canDelete = true;
 

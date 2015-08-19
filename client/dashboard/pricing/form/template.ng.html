@@ -1,95 +1,72 @@
-<md-content layout="row">
-  <div layout="row">
-    <md-card flex="31" class="push-none">
-      <md-card-content>
-        <p class="price-tier-title md-title">Checkins</p>
+<md-content layout="row" layout-sm="column" layout-padding>
+  <div layout="row" layout-sm="column">
+    <md-input-container flex="">
+      <label>Checkins</label>
+      <input type="number" ng-model="tier.checkins" min="0" required />
+    </md-input-container>
 
-        <div layout="row">
-          <input class="md-display-3 price-selector-input"
-                 type="number"
-                 ng-model="tier.checkins"
-                 value="0"
-                 min="0" />
-        </div>
-        <div layout="row" layout-align="center center" class="push-top-sm">
-          <label class="push-top-xxs text-bold">Per</label>
-          <md-select
-              aria-label="Timeframe"
-              class="pad-none push-top-none push-left-xs"
-              placeholder="Select"
-              ng-model="tier.timeframe">
-            <md-option
-                ng-repeat="state in ['Select', 'Week', 'Month', 'Year']"
-                value="{{state}}">
-              {{state}}
-            </md-option>
-          </md-select>
-        </div>
-
-      </md-card-content>
-    </md-card>
-
-    <md-card flex="31" class="push-none">
-      <md-card-content>
-        <p class="price-tier-title md-title">Price (USD)</p>
-        <div layout="row">
-          <input class="md-display-3 price-selector-input"
-                 type="number"
-                 ng-model="tier.price"
-                 value="0"
-                 min="0" />
-        </div>
-      </md-card-content>
-    </md-card>
-
-    <md-card flex="31" class="push-none">
-      <md-card-content class="position-relative">
-        <p class="price-tier-title md-title">Extras</p>
-        <md-button class="md-icon-button md-primary position-absolute"
-                   aria-label="Add extra"
-                   ng-click="addExtra(tier)"
-                   style="top: 5px; right: 0;">
-          <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
-          <md-tooltip md-direction="bottom">Add Extra</md-tooltip>
-        </md-button>
-
-        <ul class="extras-list pad-none push-none">
-          <li layout="row" ng-repeat="extra in tier.extras track by $index">
-            <form name="newExtraForm"
-                  class="extras-list-input"
-                  ng-submit="addNewItem($index, $last, tier)"
-                  layout-padding
-                  layout="row"
-                  novalidate>
-              <md-input-container
-                  md-no-float
-                  flex="95"
-                  class="pad-none">
-                <input ng-model="extra.description"
-                       ng-disabled="extra.canDelete"
-                       placeholder="{{extra.placeholder}}"
-                       aria-label="Add extra"
-                       flex="5"
-                       required>
-              </md-input-container>
-
-              <button type="button"
-                      class="btn-link"
-                      ng-click="deleteExtra(tier, $index)">
-                <md-icon
-                    md-svg-icon="action:ic_delete_24px"
-                    aria-label="Delete extra">
-                </md-icon>
-              </button>
-            </form>
-          </li>
-        </ul>
-      </md-card-content>
-    </md-card>
+    <md-select placeholder="Per" ng-model="tier.timeframe" flex="">
+      <md-option ng-repeat="state in timeframes" value="{{state.value}}">
+        {{state.name}}
+      </md-option>
+    </md-select>
+    <div flex="" class="position-relative">
+      <md-icon
+          class="position-absolute"
+          md-svg-icon="action:ic_help_24px"
+          style="bottom: 25px; left: -10px">
+      </md-icon>
+      <md-tooltip md-direction="bottom">Leave this blank to set a flat rate for a fixed number of checkins.</md-tooltip>
+    </div>
+    <md-input-container flex="">
+      <label>Price (USD)</label>
+      <input type="number"
+             ng-model="tier.price"
+             value="{{tier.price}}"
+             min="0" />
+    </md-input-container>
   </div>
+
+  <md-button class="md-icon-button md-primary position-absolute"
+             aria-label="Add extra"
+             ng-click="addExtra(tier)"
+             style="top: 5px; right: 0;">
+    <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
+    <md-tooltip md-direction="bottom">Add Extra</md-tooltip>
+  </md-button>
+
+  <!-- <ul class="extras-list pad-none push-none">
+    <li layout="row" ng-repeat="extra in tier.extras track by $index">
+      <form name="newExtraForm"
+            class="extras-list-input"
+            ng-submit="addNewItem($index, $last, tier)"
+            layout-padding
+            layout="row"
+            novalidate>
+        <md-input-container
+            md-no-float
+            flex="95"
+            class="pad-none">
+          <input ng-model="extra.description"
+                 ng-disabled="extra.canDelete"
+                 placeholder="{{extra.placeholder}}"
+                 aria-label="Add extra"
+                 flex="5"
+                 required>
+        </md-input-container>
+
+        <button type="button" class="btn-link" ng-click="deleteExtra(tier, $index)">
+          <md-icon md-svg-icon="action:ic_delete_24px" aria-label="Delete extra">
+          </md-icon>
+        </button>
+      </form>
+    </li>
+  </ul> -->
 </md-content>
-<md-divider></md-divider>
-<md-card class="push-none">
+
+<!-- <md-divider></md-divider> -->
+
+<!-- <md-card class="push-none">
   <md-card-content>
     <div class="md-actions" layout="row" layout-align="end center">
       <md-button class="md-raised md-primary" ng-click="saveTier(tier)">
@@ -100,4 +77,4 @@
       </md-button>
     </div>
   </md-card-content>
-</md-card>
+</md-card> -->
