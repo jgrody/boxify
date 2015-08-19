@@ -13,11 +13,7 @@ function($scope, $meteor, box, boxifyDialog, toast){
   }
 
   $scope.addNewItem = function(index, last, tier){
-    tier.extras[index].canDelete = true;
-
-    if (last) {
-      tier.extras.push({});
-    }
+    markAsCanDelete(tier.extras[index]);
   }
 
   $scope.saveTier = function(tier){
