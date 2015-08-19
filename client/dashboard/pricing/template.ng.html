@@ -57,9 +57,7 @@
      </md-card-content>
     </md-card>
 
-   <div layout="row"
-        layout-fill
-        layout-padding
+   <div layout-padding
         class="pad-top-none"
         ng-if="tier.editing">
      <div price-tier-form></div>
@@ -67,9 +65,9 @@
   </section>
 </div>
 
-<div layout="column"
-     layout-align="center center"
-     ng-if="!box.pricingTiers.length">
+<div ng-if="!box.pricingTiers.length"
+    layout="column"
+    layout-align="center center">
   <md-content class="no-results-logo-content">
     <md-icon
         md-svg-icon="maps:ic_local_atm_24px"

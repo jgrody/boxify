@@ -1,135 +1,59 @@
 //==============================================================================
 // Pad all around
 //==============================================================================
-@mixin pad-none { padding: 0 }
-.pad-none       { @include pad-none; }
-
-@mixin pad-xxs { padding: $spacing_xxs; }
-.pad-xxs       { @include pad-xxs; }
-
-@mixin pad-xs  { padding: $spacing_xs; }
-.pad-xs        { @include pad-xs; }
-
-@mixin pad-sm  { padding: $spacing_sm; }
-.pad-sm        { @include pad-sm; }
-
-@mixin pad     { padding: $spacing; }
-.pad           { @include pad; }
-
-@mixin pad-lg  { padding: $spacing_lg; }
-.pad-lg        { @include pad-lg; }
-
-@mixin pad-xl  { padding: $spacing_xl; }
-.pad-xl        { @include pad-xl; }
-
-@mixin pad-xxl { padding: $spacing_xxl; }
-.pad-xxl       { @include pad-xxl; }
+.pad-none { padding: 0 !important; }
+.pad-xxs { padding: $spacing_xxs !important; }
+.pad-xs { padding: $spacing_xs !important; }
+.pad-sm { padding: $spacing_sm !important; }
+.pad { padding: $spacing !important; }
+.pad-lg { padding: $spacing_lg !important; }
+.pad-xl { padding: $spacing_xl !important; }
+.pad-xxl { padding: $spacing_xxl !important; }
 
 //==============================================================================
 // Pad top around
 //==============================================================================
-@mixin pad-top-none { padding-top: 0 !important; }
-.pad-top-none       { @include pad-top-none; }
-
-@mixin pad-top-xxs { padding-top: $spacing_xxs !important; }
-.pad-top-xxs       { @include pad-top-xxs; }
-
-@mixin pad-top-xs  { padding-top: $spacing_xs !important; }
-.pad-top-xs        { @include pad-top-xs; }
-
-@mixin pad-top-sm  { padding-top: $spacing_sm !important; }
-.pad-top-sm        { @include pad-top-sm; }
-
-@mixin pad-top     { padding-top: $spacing !important; }
-.pad               { @include pad; }
-
-@mixin pad-top-lg  { padding-top: $spacing_lg !important; }
-.pad-top-lg        { @include pad-top-lg; }
-
-@mixin pad-top-xl  { padding-top: $spacing_xl !important; }
-.pad-top-xl        { @include pad-top-xl; }
-
-@mixin pad-top-xxl { padding-top: $spacing_xxl !important; }
-.pad-top-xxl       { @include pad-top-xxl; }
+.pad-top-none       { padding-top: 0 !important; }
+.pad-top-xxs       { padding-top: $spacing_xxs !important; }
+.pad-top-xs        { padding-top: $spacing_xs !important; }
+.pad-top-sm        { padding-top: $spacing_sm !important; }
+.pad               { padding-top: $spacing !important; }
+.pad-top-lg        { padding-top: $spacing_lg !important; }
+.pad-top-xl        { padding-top: $spacing_xl !important; }
+.pad-top-xxl       { padding-top: $spacing_xxl !important; }
 
 //==============================================================================
 // Pad right around
 //==============================================================================
-@mixin pad-right-none { padding-right: 0 !important; }
-.pad-right-none       { @include pad-right-none; }
-
-@mixin pad-right-xxs { padding-right: $spacing_xxs !important; }
-.pad-right-xxs       { @include pad-right-xxs; }
-
-@mixin pad-right-xs  { padding-right: $spacing_xs !important; }
-.pad-right-xs        { @include pad-right-xs; }
-
-@mixin pad-right-sm  { padding-right: $spacing_sm !important; }
-.pad-right-sm        { @include pad-right-sm; }
-
-@mixin pad-right     { padding-right: $spacing !important; }
-.pad                 { @include pad; }
-
-@mixin pad-right-lg  { padding-right: $spacing_lg !important; }
-.pad-right-lg        { @include pad-right-lg; }
-
-@mixin pad-right-xl  { padding-right: $spacing_xl !important; }
-.pad-right-xl        { @include pad-right-xl; }
-
-@mixin pad-right-xxl { padding-right: $spacing_xxl !important; }
-.pad-right-xxl       { @include pad-right-xxl; }
+.pad-right-none       { padding-right: 0 !important; }
+.pad-right-xxs       { padding-right: $spacing_xxs !important; }
+.pad-right-xs        { padding-right: $spacing_xs !important; }
+.pad-right-sm        { padding-right: $spacing_sm !important; }
+.pad                 { padding-right: $spacing !important; }
+.pad-right-lg        { padding-right: $spacing_lg !important; }
+.pad-right-xl        { padding-right: $spacing_xl !important; }
+.pad-right-xxl       { padding-right: $spacing_xxl !important; }
 
 //==============================================================================
 // Pad boottom around
 //==============================================================================
-@mixin pad-bottom-none { padding-bottom: 0 !important; }
-.pad-bottom-none       { @include pad-bottom-none; }
-
-@mixin pad-bottom-xxs  { padding-bottom: $spacing_xxs !important; }
-@mixin pad-bottom-xxs { padding-bottom: $spacing_xxs !important; }
-.pad-bottom-xxs       { @include pad-bottom-xxs; }
-
-@mixin pad-bottom-xs  { padding-bottom: $spacing_xs !important; }
-.pad-bottom-xs        { @include pad-bottom-xs; }
-
-@mixin pad-bottom-sm  { padding-bottom: $spacing_sm !important; }
-.pad-bottom-sm        { @include pad-bottom-sm; }
-
-@mixin pad-bottom     { padding-bottom: $spacing !important; }
-.pad                  { @include pad; }
-
-@mixin pad-bottom-lg  { padding-bottom: $spacing_lg !important; }
-.pad-bottom-lg        { @include pad-bottom-lg; }
-
-@mixin pad-bottom-xl  { padding-bottom: $spacing_xl !important; }
-.pad-bottom-xl        { @include pad-bottom-xl; }
-
-@mixin pad-bottom-xxl { padding-bottom: $spacing_xxl !important; }
-.pad-bottom-xxl       { @include pad-bottom-xxl; }
+.pad-bottom-none       { padding-bottom: 0 !important; }
+.pad-bottom-xxs       { padding-bottom: $spacing_xxs !important; }
+.pad-bottom-xs        { padding-bottom: $spacing_xs !important; }
+.pad-bottom-sm        { padding-bottom: $spacing_sm !important; }
+.pad                  { padding-bottom: $spacing !important; }
+.pad-bottom-lg        { padding-bottom: $spacing_lg !important; }
+.pad-bottom-xl        { padding-bottom: $spacing_xl !important; }
+.pad-bottom-xxl       { padding-bottom: $spacing_xxl !important; }
 
 //==============================================================================
 // Pad left around
 //==============================================================================
-@mixin pad-left-none { padding-left: 0 !important; }
-.pad-left-none       { @include pad-left-none; }
-
-@mixin pad-left-xxs { padding-left: $spacing_xxs !important; }
-.pad-left-xxs       { @include pad-left-xxs; }
-
-@mixin pad-left-xs  { padding-left: $spacing_xs !important; }
-.pad-left-xs        { @include pad-left-xs; }
-
-@mixin pad-left-sm  { padding-left: $spacing_sm !important; }
-.pad-left-sm        { @include pad-left-sm; }
-
-@mixin pad-left     { padding-left: $spacing !important; }
-.pad                { @include pad; }
-
-@mixin pad-left-lg  { padding-left: $spacing_lg !important; }
-.pad-left-lg        { @include pad-left-lg; }
-
-@mixin pad-left-xl  { padding-left: $spacing_xl !important; }
-.pad-left-xl        { @include pad-left-xl; }
-
-@mixin pad-left-xxl { padding-left: $spacing_xxl !important; }
-.pad-left-xxl       { @include pad-left-xxl; }
+.pad-left-none { padding-left: 0 !important; }
+.pad-left-xxs { padding-left: $spacing_xxs !important; }
+.pad-left-xs { padding-left: $spacing_xs !important; }
+.pad-left-sm { padding-left: $spacing_sm !important; }
+.pad { padding-left: $spacing !important; }
+.pad-left-lg { padding-left: $spacing_lg !important; }
+.pad-left-xl { padding-left: $spacing_xl !important; }
+.pad-left-xxl { padding-left: $spacing_xxl !important; }
