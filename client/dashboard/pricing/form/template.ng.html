@@ -1,16 +1,24 @@
-<md-content layout="row" layout-sm="column">
-  <md-card class="push-none" flex="33" flex-sm="100">
-    <md-card-content>
+<md-card>
+  <md-card-content
+      layout="row"
+      layout-sm="column"
+      class="card-container md-whiteframe-z2">
+    <div class="price-tier-card"
+         flex="33"
+         flex-sm="100"
+         layout-padding>
       <p class="price-tier-title md-title">Checkins</p>
       <md-input-container class="price-input-container">
         <input class="md-display-3 text-center"
                type="number"
                ng-model="tier.checkins"
                value="0"
-               min="0" />
+               min="0"
+               aria-label="Checkins"
+               required />
       </md-input-container>
 
-      <div class="push-top-sm push-bottom-sm"
+      <div class="push-bottom-sm"
            layout="row"
            layout-align="center center">
         <label class="push-top-xxs text-bold">Per</label>
@@ -26,30 +34,44 @@
           </md-option>
         </md-select>
       </div>
+    </div>
 
-    </md-card-content>
-  </md-card>
+    <div class="price-tier-card middle"
+         flex="33"
+         flex-sm="100"
+         layout-padding>
 
-  <md-card class="push-none" flex="33" flex-sm="100">
-    <md-card-content>
+      <md-divider class="push-top push-bottom" hide-gt-sm></md-divider>
+      <div class="or-spacer-vertical left" hide-sm>
+        <div class="mask" hide-sm></div>
+      </div>
+
       <p class="price-tier-title md-title">Price (USD)</p>
       <md-input-container class="price-input-container">
         <input class="md-display-3 text-center"
                type="number"
                ng-model="tier.price"
                value="0"
-               min="0" />
+               min="0"
+               aria-label="Price"
+               required />
       </md-input-container>
-    </md-card-content>
-  </md-card>
 
-  <md-card class="push-none" flex="33" flex-sm="100">
-    <md-card-content class="position-relative">
+      <md-divider class="push-top push-bottom" hide-gt-sm></md-divider>
+      <div class="or-spacer-vertical right" hide-sm>
+        <div class="mask" hide-sm></div>
+      </div>
+    </div>
+
+    <div class="price-tier-card"
+         flex="33"
+         flex-sm="100"
+         layout-padding>
       <p class="price-tier-title md-title">Extras</p>
       <md-button class="md-icon-button md-primary position-absolute"
                  aria-label="Add extra"
                  ng-click="addExtra(tier)"
-                 style="top: 5px; right: 0;">
+                 style="top: -3px; right: 0;">
         <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
         <md-tooltip md-direction="bottom">Add Extra</md-tooltip>
       </md-button>
@@ -57,12 +79,15 @@
       <md-list>
         <md-list-item
             class="pad-none"
-            ng-repeat="extra in tier.extras">
+            ng-class="{'push-bottom': $last}"
+            ng-repeat="extra in tier.extras"
+            layout-padding>
           <form name="newExtraForm"
                 class="pad-none"
                 ng-submit="addNewItem($index, $last, tier)"
                 layout-fill
-                novalidate>
+                novalidate
+                style="width: 85%; margin: 0 auto;">
             <md-input-container
                 md-no-float
                 class="pad-none">
@@ -83,26 +108,14 @@
           </form>
         </md-list-item>
       </md-list>
-
-      <!-- <ul class="extras-list pad-none push-none">
-        <li ng-repeat="extra in tier.extras track by $index">
-        </li>
-      </ul> -->
-    </md-card-content>
-  </md-card>
-</md-content>
-
-<md-divider></md-divider>
-
-<md-card class="push-none">
-  <md-card-content>
-    <div class="md-actions" layout="row" layout-align="end center">
-      <md-button class="md-raised md-primary" ng-click="saveTier(tier)">
-        Save
-      </md-button>
-      <md-button class="md-raised md-default" ng-click="cancelSave(tier)">
-        Cancel
-      </md-button>
     </div>
   </md-card-content>
+  <div class="md-actions" layout="row" layout-align="end center">
+    <md-button class="md-primary" ng-click="saveTier(tier)">
+      Save
+    </md-button>
+    <md-button class="md-default" ng-click="cancelSave(tier)">
+      Cancel
+    </md-button>
+  </div>
 </md-card>
