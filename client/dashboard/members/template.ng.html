@@ -11,7 +11,7 @@
   <md-tooltip md-direction="top">Add Member</md-tooltip>
 </md-button>
 <md-card ng-if="members.length">
-  <md-card-content>
+  <md-card-content class="pad-none">
     <section id="members">
       <md-list>
         <md-item ng-repeat="member in members">
@@ -38,16 +38,13 @@
                  ng-show="member.emails[0].verified">
                Verified
               </p>
-
-              <div class="md-secondary">
-                <md-button
-                    class="md-fab md-mini md-hue-3 delete-member"
-                    ng-click="deleteUser($event, member)"
-                    aria-label="Delete User">
-                  <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
-                  <md-tooltip> Delete </md-tooltip>
-                </md-button>
-              </div>
+              <md-button
+                  class="md-secondary md-icon-button delete-member"
+                  ng-click="deleteUser($event, member)"
+                  aria-label="Delete User">
+                <md-icon md-svg-icon="action:ic_delete_24px"></md-icon>
+                <md-tooltip> Delete </md-tooltip>
+              </md-button>
             </div>
           </md-item-content>
           <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
