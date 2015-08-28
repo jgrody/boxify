@@ -7,7 +7,7 @@ md-toast {
   height: auto;
   max-height: none;
   min-height: 0px;
-  max-width: 600px;
+  max-width: 450px;
   padding: 0 !important;
   position: fixed;
   background: white !important;
@@ -43,7 +43,6 @@ md-toast {
     color: white;
     display: table;
     font-weight: normal;
-    text-transform: uppercase;
     width: 100%;
   }
 

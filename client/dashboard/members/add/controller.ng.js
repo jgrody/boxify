@@ -31,8 +31,8 @@ function($scope, box, boxifyCall, $mdDialog, toast){
       .then(function(){
         toast({
           type: "success",
-          title: "Success",
-          message: "The user has been added and will get an email with further instructions to verify their account."
+          title: "User added.",
+          message: "The user will get an email with further instructions to verify their account."
         })
       })
     }

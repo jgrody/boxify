@@ -40,8 +40,7 @@ function($scope, $meteor, box, boxifyCall, boxifyDialog, toast){
       .then(function(){
         toast({
           type: "success",
-          title: "Success",
-          message: "The user has been deleted."
+          title: "User deleted."
         })
       });
   }

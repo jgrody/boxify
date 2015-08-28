@@ -74,14 +74,12 @@ function($scope, box, $rootScope, $meteor, boxifyDialog, toast){
     return box.save().then(function(){
       toast({
         type: "success",
-        title: "Success",
-        message: "Settings updated successfully."
+        title: "Settings updated."
       })
     });
   }
 
   $scope.cancel = function(){
-    // console.log('reset');
     box.reset();
   }
 
